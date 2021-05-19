@@ -1,6 +1,8 @@
 ﻿using APIBanking.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -34,17 +36,30 @@ namespace APIBanking.Controllers
         {
             if (login == null)
                 throw new HttpResponseException(HttpStatusCode.BadRequest);
-
-            //TODO: Validate credentials Correctly, this code is only for demo !!
-            bool isCredentialValid = (login.Password == "123456");
-            if (isCredentialValid)
+            Usuario user = returnUserOnValidation(login);
+            if (user!=null)
             {
-                var token = TokenGenerator.GenerateTokenJwt(login.Username);
-                return Ok(token);
+                user.TOKEN = TokenGenerator.GenerateTokenJwt(login.Username);
+                return Ok(user);
             }
             else
             {
                 return Unauthorized();
+            }
+        }
+        private Usuario returnUserOnValidation(LoginRequest login) {
+            using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["Banking"].ConnectionString)) {
+                SqlCommand sqlCommand = new SqlCommand(@"SELECT US_ID,US_USERNAME FROM USUARIO WHERE US_USERNAME=@USERNAME AND US_PASSWORD=@PASSWORD", sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@USERNAME", login.Username);
+                sqlCommand.Parameters.AddWithValue("@PASSWORD", login.Password);
+                sqlConnection.Open();
+                Usuario usuario = new Usuario();
+                SqlDataReader reader = sqlCommand.ExecuteReader();
+                while (reader.Read()) {
+                    usuario = new Usuario { US_ID = reader.GetInt32(0), US_USERNAME = reader.GetString(1) };
+                }
+                sqlConnection.Close();
+                return usuario;
             }
         }
     }
