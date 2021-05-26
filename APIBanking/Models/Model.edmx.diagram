@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="331d803ad66145c78e3409842f63fe82" Name="Diagram1">
+        <EntityTypeShape EntityType="BankingModel.Cuenta" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankingModel.Error" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankingModel.Estadistica" Width="1.5" PointX="3" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankingModel.Moneda" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankingModel.Pago" Width="1.5" PointX="7.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankingModel.PRUEBA" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankingModel.Servicio" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankingModel.Sesion" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankingModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankingModel.Transferencia" Width="1.5" PointX="5.25" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BankingModel.Usuario" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <AssociationConnector Association="BankingModel.FK_Cuenta_Moneda" ManuallyRouted="false" />
+        <AssociationConnector Association="BankingModel.FK_Cuenta_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="BankingModel.FK_Pago_Cuenta" ManuallyRouted="false" />
+        <AssociationConnector Association="BankingModel.FK_Transferencia_Cuenta" ManuallyRouted="false" />
+        <AssociationConnector Association="BankingModel.FK_Transferencia_Cuenta1" ManuallyRouted="false" />
+        <AssociationConnector Association="BankingModel.FK_Error_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="BankingModel.FK_Estadistica_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="BankingModel.FK_Pago_Moneda" ManuallyRouted="false" />
+        <AssociationConnector Association="BankingModel.FK_Pago_Servicio" ManuallyRouted="false" />
+        <AssociationConnector Association="BankingModel.FK_Sesion_Usuario" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

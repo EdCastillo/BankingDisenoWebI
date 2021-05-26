@@ -12,33 +12,31 @@ namespace APIBanking.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Usuario
+    public partial class Cuenta
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Usuario()
+        public Cuenta()
         {
-            this.Cuenta = new HashSet<Cuenta>();
-            this.Error = new HashSet<Error>();
-            this.Estadistica = new HashSet<Estadistica>();
-            this.Sesion = new HashSet<Sesion>();
+            this.Pago = new HashSet<Pago>();
+            this.Transferencia = new HashSet<Transferencia>();
+            this.Transferencia1 = new HashSet<Transferencia>();
         }
     
         public int Codigo { get; set; }
-        public string Identificacion { get; set; }
-        public string Nombre { get; set; }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
-        public System.DateTime FechaNacimiento { get; set; }
+        public int CodigoUsuario { get; set; }
+        public string Descripcion { get; set; }
+        public string IBAN { get; set; }
+        public int CodigoMoneda { get; set; }
+        public decimal Saldo { get; set; }
         public string Estado { get; set; }
     
+        public virtual Moneda Moneda { get; set; }
+        public virtual Usuario Usuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cuenta> Cuenta { get; set; }
+        public virtual ICollection<Pago> Pago { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Error> Error { get; set; }
+        public virtual ICollection<Transferencia> Transferencia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Estadistica> Estadistica { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sesion> Sesion { get; set; }
+        public virtual ICollection<Transferencia> Transferencia1 { get; set; }
     }
 }

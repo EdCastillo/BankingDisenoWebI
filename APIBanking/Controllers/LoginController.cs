@@ -49,14 +49,14 @@ namespace APIBanking.Controllers
         }
         private Usuario returnUserOnValidation(LoginRequest login) {
             using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["Banking"].ConnectionString)) {
-                SqlCommand sqlCommand = new SqlCommand(@"SELECT US_ID,US_USERNAME FROM USUARIO WHERE US_USERNAME=@USERNAME AND US_PASSWORD=@PASSWORD", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand(@"SELECT Codigo,Username FROM USUARIO WHERE Username=@USERNAME AND Password=@PASSWORD", sqlConnection);
                 sqlCommand.Parameters.AddWithValue("@USERNAME", login.Username);
                 sqlCommand.Parameters.AddWithValue("@PASSWORD", login.Password);
                 sqlConnection.Open();
                 Usuario usuario = new Usuario();
                 SqlDataReader reader = sqlCommand.ExecuteReader();
                 while (reader.Read()) {
-                    usuario = new Usuario { US_ID = reader.GetInt32(0), US_USERNAME = reader.GetString(1) };
+                    usuario = new Usuario { Codigo = reader.GetInt32(0), Username = reader.GetString(1) };
                 }
                 sqlConnection.Close();
                 return usuario;
