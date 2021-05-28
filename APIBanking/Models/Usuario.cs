@@ -31,6 +31,7 @@ namespace APIBanking.Models
         public string Email { get; set; }
         public System.DateTime FechaNacimiento { get; set; }
         public string Estado { get; set; }
+        public string TOKEN { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cuenta> Cuenta { get; set; }

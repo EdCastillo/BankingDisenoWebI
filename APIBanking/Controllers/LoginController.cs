@@ -15,48 +15,42 @@ namespace APIBanking.Controllers
     [RoutePrefix("api/login")]
     public class LoginController : ApiController
     {
-        [HttpGet]
-        [Route("echoping")]
-        public IHttpActionResult EchoPing()
-        {
-            return Ok(true);
-        }
-
-        [HttpGet]
-        [Route("echouser")]
-        public IHttpActionResult EchoUser()
-        {
-            var identity = Thread.CurrentPrincipal.Identity;
-            return Ok($" IPrincipal-user: {identity.Name} - IsAuthenticated: {identity.IsAuthenticated}");
-        }
 
         [HttpPost]
         [Route("authenticate")]
         public IHttpActionResult Authenticate(LoginRequest login)
         {
             if (login == null)
-                throw new HttpResponseException(HttpStatusCode.BadRequest);
-            Usuario user = returnUserOnValidation(login);
-            if (user!=null)
+                return BadRequest();
+            try
             {
-                user.TOKEN = TokenGenerator.GenerateTokenJwt(login.Username);
-                return Ok(user);
+                Usuario user = returnUserOnValidation(login);
+                if (user.Codigo!=0)
+                {
+                    user.TOKEN = TokenGenerator.GenerateTokenJwt(login.Username);
+                    return Ok(user);
+                }
+                else
+                {
+                    return Unauthorized();
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return Unauthorized();
+
+                return InternalServerError(ex);
             }
         }
         private Usuario returnUserOnValidation(LoginRequest login) {
             using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["Banking"].ConnectionString)) {
-                SqlCommand sqlCommand = new SqlCommand(@"SELECT Codigo,Username FROM USUARIO WHERE Username=@USERNAME AND Password=@PASSWORD", sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand(@"SELECT Codigo,Username,Email,Estado,Nombre FROM USUARIO WHERE Username=@USERNAME AND Password=@PASSWORD", sqlConnection);
                 sqlCommand.Parameters.AddWithValue("@USERNAME", login.Username);
                 sqlCommand.Parameters.AddWithValue("@PASSWORD", login.Password);
                 sqlConnection.Open();
                 Usuario usuario = new Usuario();
                 SqlDataReader reader = sqlCommand.ExecuteReader();
                 while (reader.Read()) {
-                    usuario = new Usuario { Codigo = reader.GetInt32(0), Username = reader.GetString(1) };
+                    usuario = new Usuario { Codigo = reader.GetInt32(0), Username = reader.GetString(1),Email=reader.GetString(2),Estado=reader.GetString(3),Nombre=reader.GetString(4) };
                 }
                 sqlConnection.Close();
                 return usuario;
