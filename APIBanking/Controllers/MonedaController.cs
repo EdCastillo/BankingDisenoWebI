@@ -98,18 +98,17 @@ namespace APIBanking.Controllers
                     new SqlConnection(ConfigurationManager.ConnectionStrings["Banking"].ConnectionString))
                 {
                     SqlCommand sqlCommand =
-                        new SqlCommand(@" INSERT INTO Moneda (Descripcion, Estado) 
-                                         VALUES (@Descripcion, @Estado)",
-                                         sqlConnection);
-
-
+                        new SqlCommand(@"INSERT INTO Moneda (Descripcion, Estado) output inserted.Codigo
+                                         VALUES (@Descripcion, @Estado)",sqlConnection);
                     sqlCommand.Parameters.AddWithValue("@Descripcion", moneda.Descripcion);
                     sqlCommand.Parameters.AddWithValue("@Estado", moneda.Estado);
 
                     sqlConnection.Open();
 
-                    int filasAfectadas = sqlCommand.ExecuteNonQuery();
-
+                    SqlDataReader reader = sqlCommand.ExecuteReader();
+                    while (reader.Read()) {
+                        moneda.Codigo = reader.GetInt32(0);
+                    }
                     sqlConnection.Close();
                 }
             }
