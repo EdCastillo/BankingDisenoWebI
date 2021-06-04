@@ -111,7 +111,11 @@ namespace APIBanking.Controllers
 
                     //int filasAfectadas = sqlCommand.ExecuteNonQuery();
                     SqlDataReader reader = sqlCommand.ExecuteReader();
-
+                    //returning codigo(PK), correccion
+                    while(reader.Read()){
+                        servicio.Codigo=reader.getInt32(0);
+                    }
+                    //
                     sqlConnection.Close();
                 }
             }
