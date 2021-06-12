@@ -78,7 +78,7 @@ namespace APIBanking.Controllers
             {
                 using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["Banking"].ConnectionString))
                 {
-                    SqlCommand sqlCommand = new SqlCommand(@"insert into Cuenta output inserter.Codigo values(@CodigoUsuario,@Descripcion,@IBAN,@CodigoMoneda,@Saldo,@Estado)", sqlConnection);
+                    SqlCommand sqlCommand = new SqlCommand(@"insert into Cuenta output inserted.Codigo values(@CodigoUsuario,@Descripcion,@IBAN,@CodigoMoneda,@Saldo,@Estado)", sqlConnection);
                     sqlCommand.Parameters.AddWithValue("@CodigoUsuario",cuenta.CodigoUsuario);
                     sqlCommand.Parameters.AddWithValue("@Descripcion", cuenta.Descripcion);
                     sqlCommand.Parameters.AddWithValue("@IBAN", cuenta.IBAN);
