@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using WebApiSegura.Models;
+using APIBanking.Models;
 
 namespace WebApiSegura.Controllers
 {
