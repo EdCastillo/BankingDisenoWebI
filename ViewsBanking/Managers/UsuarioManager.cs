@@ -13,7 +13,7 @@ namespace ViewsBanking.Managers
 {
     public class UsuarioManager:APIUtilities
     {
-        private const string ROUTE_Object_PREFIX = "login/";
+         private const string ROUTE_Object_PREFIX = "login/";
         private const string LoginRoute = "authenticate";
 
 
@@ -45,6 +45,5 @@ namespace ViewsBanking.Managers
                 JsonConvert.DeserializeObject<Usuario>
                 (await response.Content.ReadAsStringAsync());
         }
-
     }
 }

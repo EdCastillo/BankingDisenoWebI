@@ -5,12 +5,14 @@ using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Net.Http;
+
+
 
 namespace ViewsBanking.Utilities
 {
     
     public class APIUtilities{
+
         public const string API_ROUTE= "https://localhost:50266/api/";
 
 
@@ -56,6 +58,5 @@ namespace ViewsBanking.Utilities
             var result = await client.GetStringAsync(API_ROUTE + routeObjectPrefix + HttpActionRoute);
             return JsonConvert.DeserializeObject<IEnumerable<object>>(result);
         }
-
     }
 }
