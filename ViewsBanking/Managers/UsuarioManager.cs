@@ -13,20 +13,37 @@ namespace ViewsBanking.Managers
 {
     public class UsuarioManager:APIUtilities
     {
-        private const string ROUTE_Object_PREFIX = "login/";
-        private const string LoginRoute = "authenticate/";
+         private const string ROUTE_Object_PREFIX = "login/";
+        private const string LoginRoute = "authenticate";
 
 
         public async Task<Usuario> Login(LoginRequest loginRequest) {
-            HttpClient client = GetAnonymousClient();
-            var result=await client.PostAsync(API_ROUTE+ ROUTE_Object_PREFIX + LoginRoute,new StringContent(JsonConvert.SerializeObject(loginRequest),Encoding.UTF8));
+            HttpClient client = new HttpClient();
+            string route = API_ROUTE + ROUTE_Object_PREFIX + LoginRoute;
+            var result=await client.PostAsync(route,new StringContent(JsonConvert.SerializeObject(loginRequest),Encoding.UTF8, "application/json"));
             return JsonConvert.DeserializeObject<Usuario>(await result.Content.ReadAsStringAsync());
         }
         public async Task<Usuario> Insertar(Usuario usuario) {
             HttpClient client = GetAnonymousClient();
-            var result = await client.PostAsync(API_ROUTE + ROUTE_Object_PREFIX +"ingresar", new StringContent(JsonConvert.SerializeObject(usuario), Encoding.UTF8));
+            var result = await client.PostAsync((API_ROUTE + ROUTE_Object_PREFIX +"ingresar"), new StringContent(JsonConvert.SerializeObject(usuario), Encoding.UTF8,"application/json"));
             return JsonConvert.DeserializeObject<Usuario>(await result.Content.ReadAsStringAsync());
         }
-        
+
+        public async Task<Usuario> Validar(string username, string password)
+        {
+            LoginRequest loginRequest = new
+                LoginRequest()
+            { Username = username, Password = password };
+
+            HttpClient httpClient = new HttpClient();
+
+            var response = await
+                httpClient.PostAsync("https://localhost:50266/api/login/authenticate/",
+                new StringContent(JsonConvert.SerializeObject(loginRequest),
+                Encoding.UTF8, "application/json"));
+            return
+                JsonConvert.DeserializeObject<Usuario>
+                (await response.Content.ReadAsStringAsync());
+        }
     }
 }
