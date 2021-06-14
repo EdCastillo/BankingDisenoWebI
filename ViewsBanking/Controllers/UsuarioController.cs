@@ -16,10 +16,10 @@ namespace ViewsBanking.Controllers
         {
             return View();
         }
-        public async Task<ActionResult> Authenticate(string username,string password) {
+
+        public async Task<ActionResult> Authenticate() {
             UsuarioManager manager = new UsuarioManager();
-            //Usuario user=await manager.Insertar(new Usuario {Identificacion="asd",Nombre="asd",Username="assd",Password="asd",Email="asd",FechaNacimiento=DateTime.Now,Estado="a" });
-            Usuario usuario=await manager.Login(new LoginRequest { Username = username, Password = password });
+            Usuario usuario=await manager.Validar("string","string");
             if (usuario.Codigo == 0) {
 
                 Redirect("");

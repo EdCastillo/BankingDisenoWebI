@@ -28,6 +28,23 @@ namespace ViewsBanking.Managers
             var result = await client.PostAsync((API_ROUTE + ROUTE_Object_PREFIX +"ingresar"), new StringContent(JsonConvert.SerializeObject(usuario), Encoding.UTF8,"application/json"));
             return JsonConvert.DeserializeObject<Usuario>(await result.Content.ReadAsStringAsync());
         }
-        
+
+        public async Task<Usuario> Validar(string username, string password)
+        {
+            LoginRequest loginRequest = new
+                LoginRequest()
+            { Username = username, Password = password };
+
+            HttpClient httpClient = new HttpClient();
+
+            var response = await
+                httpClient.PostAsync("https://localhost:50266/api/login/authenticate/",
+                new StringContent(JsonConvert.SerializeObject(loginRequest),
+                Encoding.UTF8, "application/json"));
+            return
+                JsonConvert.DeserializeObject<Usuario>
+                (await response.Content.ReadAsStringAsync());
+        }
+
     }
 }
