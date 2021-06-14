@@ -189,11 +189,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Managers\ErrorManager.cs" />
     <Compile Include="Managers\UsuarioManager.cs" />
     <Compile Include="Models\Cuenta.cs" />
     <Compile Include="Models\Error.cs" />
@@ -204,6 +206,7 @@
     <Compile Include="Models\Servicio.cs" />
     <Compile Include="Models\Sesion.cs" />
     <Compile Include="Models\Transferencia.cs" />
+    <Compile Include="Models\UserCookie.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\APIUtilities.cs" />
@@ -244,11 +247,12 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Usuario\Authenticate.cshtml" />
+    <Content Include="Views\Usuario\Test.cshtml" />
+    <Content Include="Views\Error\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="NewFolder1\" />
-    <Folder Include="Views\Usuario\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

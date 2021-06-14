@@ -9,6 +9,45 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </head>
 <body>
+    @{ 
+        #region CookiesConfiguration_1.0
+        //Cookies Configuration 1.0 (Configurado para Banking del 4.0 de TV)
+        ViewsBanking.Models.UserCookie user = new ViewsBanking.Models.UserCookie();
+        CreateOrValidate();
+        void CreateOrValidate()
+        {
+            HttpCookie comp = Request.Cookies["UserCookie"];
+            if (comp == null)
+            {
+                //Crear cookies si no existen
+                HttpCookie UserCookie = new HttpCookie("UserCookie");
+                UserCookie["ID"] = "0";
+                UserCookie["Nombre"] = "Invitado";
+                UserCookie["APIToken"] = "NotValid";
+                UserCookie.Expires.AddHours(5);
+                Response.Cookies.Add(UserCookie);
+
+                //cargar cookies existentes
+                HttpCookie reqCookies = Request.Cookies["UserCookie"];
+                user = new ViewsBanking.Models.UserCookie();
+                user.Nombre = reqCookies["Nombre"].ToString();
+                user.ID = Int32.Parse(reqCookies["ID"].ToString());
+                user.APIToken = reqCookies["APIToken"].ToString();
+                
+            }
+            else
+            {
+                //cargar cookies existentes
+                HttpCookie reqCookies = Request.Cookies["UserCookie"];
+                user = new ViewsBanking.Models.UserCookie();
+                user.Nombre = reqCookies["Nombre"].ToString();
+                user.ID = Int32.Parse(reqCookies["ID"].ToString());
+                user.APIToken = reqCookies["APIToken"].ToString();
+                
+            }
+        }
+        #endregion
+    }
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             Header
@@ -21,7 +60,6 @@
             <p>&copy; @DateTime.Now.Year - Banking</p>
         </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
