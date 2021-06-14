@@ -5,7 +5,7 @@ using System.Web;
 
 namespace ViewsBanking.Models
 {
-
+    public class Usuario { 
         public int Codigo { get; set; }
         public string Identificacion { get; set; }
         public string Nombre { get; set; }
