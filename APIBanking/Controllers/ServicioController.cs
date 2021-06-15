@@ -8,23 +8,24 @@ using System.Net.Http;
 using System.Web.Http;
 using APIBanking.Models;
 
+
 namespace APIBanking.Controllers
 {
     [AllowAnonymous]
-    [RoutePrefix("api/Moneda")]
-    public class MonedaController : ApiController
+    [RoutePrefix("api/Servicio")]
+    public class ServicioController : ApiController
     {
         [HttpGet]
         public IHttpActionResult GetId(int id)
         {
-            Moneda moneda = new Moneda();
+            Servicio servicio = new Servicio();
             try
             {
                 using (SqlConnection sqlConnection = new
                     SqlConnection(ConfigurationManager.ConnectionStrings["Banking"].ConnectionString))
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"SELECT Codigo, Descripcion, Estado
-                                                             FROM   Moneda
+                                                             FROM   Servicio
                                                              WHERE Codigo = @Codigo", sqlConnection);
 
                     sqlCommand.Parameters.AddWithValue("@Codigo", id);
@@ -35,9 +36,9 @@ namespace APIBanking.Controllers
 
                     while (sqlDataReader.Read())
                     {
-                        moneda.Codigo = sqlDataReader.GetInt32(0);
-                        moneda.Descripcion = sqlDataReader.GetString(1);
-                        moneda.Estado = sqlDataReader.GetString(2);
+                        servicio.Codigo = sqlDataReader.GetInt32(0);
+                        servicio.Descripcion = sqlDataReader.GetString(1);
+                        servicio.Estado = sqlDataReader.GetString(2);
                     }
 
                     sqlConnection.Close();
@@ -48,32 +49,32 @@ namespace APIBanking.Controllers
                 return InternalServerError(ex);
             }
 
-            return Ok(moneda);
+            return Ok(servicio);
         }
 
         [HttpGet]
         public IHttpActionResult GetAll()
         {
-            List<Moneda> monedas = new List<Moneda>();
+            List<Servicio> servicios = new List<Servicio>();
             try
             {
                 using (SqlConnection sqlConnection = new
                     SqlConnection(ConfigurationManager.ConnectionStrings["Banking"].ConnectionString))
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"SELECT Codigo, Descripcion, Estado
-                                                            FROM   Moneda", sqlConnection);
+                                                            FROM   Servicio", sqlConnection);
                     sqlConnection.Open();
 
                     SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
 
                     while (sqlDataReader.Read())
                     {
-                        Moneda moneda = new Moneda();
-                        moneda.Codigo = sqlDataReader.GetInt32(0);
-                        moneda.Descripcion = sqlDataReader.GetString(1);
-                        moneda.Estado = sqlDataReader.GetString(2);
+                        Servicio servicio = new Servicio();
+                        servicio.Codigo = sqlDataReader.GetInt32(0);
+                        servicio.Descripcion = sqlDataReader.GetString(1);
+                        servicio.Estado = sqlDataReader.GetString(2);
 
-                        monedas.Add(moneda);
+                        servicios.Add(servicio);
                     }
                     sqlConnection.Close();
                 }
@@ -82,14 +83,14 @@ namespace APIBanking.Controllers
             {
                 return InternalServerError(ex);
             }
-            return Ok(monedas);
+            return Ok(servicios);
         }
 
 
         [HttpPost]
-        public IHttpActionResult Ingresar(Moneda moneda)
+        public IHttpActionResult Ingresar(Servicio servicio)
         {
-            if (moneda == null)
+            if (servicio == null)
                 return BadRequest();
 
             try
@@ -98,17 +99,23 @@ namespace APIBanking.Controllers
                     new SqlConnection(ConfigurationManager.ConnectionStrings["Banking"].ConnectionString))
                 {
                     SqlCommand sqlCommand =
-                        new SqlCommand(@"INSERT INTO Moneda (Descripcion, Estado) output inserted.Codigo
-                                         VALUES (@Descripcion, @Estado)",sqlConnection);
-                    sqlCommand.Parameters.AddWithValue("@Descripcion", moneda.Descripcion);
-                    sqlCommand.Parameters.AddWithValue("@Estado", moneda.Estado);
+                        new SqlCommand(@" INSERT INTO Servicio output inserted.Codigo  
+                                         VALUES (@Descripcion, @Estado)",
+                                         sqlConnection);
+                    //(Descripcion, Estado)
+
+                    sqlCommand.Parameters.AddWithValue("@Descripcion", servicio.Descripcion);
+                    sqlCommand.Parameters.AddWithValue("@Estado", servicio.Estado);
 
                     sqlConnection.Open();
 
+                    //int filasAfectadas = sqlCommand.ExecuteNonQuery();
                     SqlDataReader reader = sqlCommand.ExecuteReader();
-                    while (reader.Read()) {
-                        moneda.Codigo = reader.GetInt32(0);
+                    //returning codigo(PK), correccion
+                    while(reader.Read()){
+                        servicio.Codigo=reader.GetInt32(0);
                     }
+                    //
                     sqlConnection.Close();
                 }
             }
@@ -117,13 +124,13 @@ namespace APIBanking.Controllers
                 return InternalServerError(ex);
             }
 
-            return Ok(moneda);
+            return Ok(servicio);
         }
 
         [HttpPut]
-        public IHttpActionResult Actualizar(Moneda moneda)
+        public IHttpActionResult Actualizar(Servicio servicio)
         {
-            if (moneda == null)
+            if (servicio == null)
                 return BadRequest();
 
             try
@@ -132,16 +139,14 @@ namespace APIBanking.Controllers
                     new SqlConnection(ConfigurationManager.ConnectionStrings["Banking"].ConnectionString))
                 {
                     SqlCommand sqlCommand =
-                        new SqlCommand(@" UPDATE Moneda 
-                                                        SET 
-                                                            Descripcion = @Descripcion,
-                                                            Estado = @Estado 
-                                          WHERE Codigo = @Codigo",
-                                         sqlConnection);
+                        new SqlCommand(@"UPDATE Servicio SET 
+                                                        Descripcion = @Descripcion,
+                                                        Estado = @Estado     
+                                          WHERE Codigo = @Codigo", sqlConnection);
 
-                    sqlCommand.Parameters.AddWithValue("@Codigo", moneda.Codigo);
-                    sqlCommand.Parameters.AddWithValue("@Descripcion", moneda.Descripcion);
-                    sqlCommand.Parameters.AddWithValue("@Estado", moneda.Estado);
+                    sqlCommand.Parameters.AddWithValue("@Codigo", servicio.Codigo);
+                    sqlCommand.Parameters.AddWithValue("@Descripcion", servicio.Descripcion);
+                    sqlCommand.Parameters.AddWithValue("@Estado", servicio.Estado);
 
                     sqlConnection.Open();
 
@@ -155,7 +160,7 @@ namespace APIBanking.Controllers
                 return InternalServerError(ex);
             }
 
-            return Ok(moneda);
+            return Ok(servicio);
         }
 
         [HttpDelete]
@@ -170,7 +175,7 @@ namespace APIBanking.Controllers
                     new SqlConnection(ConfigurationManager.ConnectionStrings["Banking"].ConnectionString))
                 {
                     SqlCommand sqlCommand =
-                        new SqlCommand(@" DELETE Moneda WHERE Codigo = @Codigo",
+                        new SqlCommand(@" DELETE Servicio WHERE Codigo = @Codigo",
                                          sqlConnection);
 
                     sqlCommand.Parameters.AddWithValue("@Codigo", id);

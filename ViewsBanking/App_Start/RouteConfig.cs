@@ -14,10 +14,15 @@ namespace ViewsBanking
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+                name:"Login",
+                url: "authenticate/",
+                defaults:new { controller="Usuario",action= "Authenticate" });
+
+            routes.MapRoute(name:"Test",url:"Test",defaults:new {controller="Usuario",action="Test" });
+
+
+
+            routes.MapRoute(name: "ErrorIndex", url: "ErrorInsert", defaults: new { controller = "Error", action = "Index" });
         }
     }
 }
