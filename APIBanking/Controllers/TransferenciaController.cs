@@ -23,7 +23,7 @@ namespace APIBanking.Controllers
                 using (SqlConnection sqlConnection = new
                     SqlConnection(ConfigurationManager.ConnectionStrings["Banking"].ConnectionString))
                 {
-                    SqlCommand sqlCommand = new SqlCommand(@"SELECT Codigo, CuentaOrigen, CuentaDestino, FechaHora,Descripcion, Moneda, Estado
+                    SqlCommand sqlCommand = new SqlCommand(@"SELECT Codigo, CuentaOrigen, CuentaDestino, FechaHora,Descripcion, Monto, Estado
                                                              FROM   Transferencia
                                                              WHERE Codigo = @Codigo", sqlConnection);
 
@@ -39,8 +39,8 @@ namespace APIBanking.Controllers
                         transferencia.CuentaOrigen = sqlDataReader.GetInt32(1);
                         transferencia.CuentaDestino = sqlDataReader.GetInt32(2);
                         transferencia.FechaHora = sqlDataReader.GetDateTime(3);
-                        transferencia.Monto = sqlDataReader.GetInt32(4);
-                        transferencia.Descripcion = sqlDataReader.GetString(5);
+                        transferencia.Monto = sqlDataReader.GetInt32(5);
+                        transferencia.Descripcion = sqlDataReader.GetString(4);
                         transferencia.Estado = sqlDataReader.GetString(6);
                     }
 
@@ -105,7 +105,7 @@ namespace APIBanking.Controllers
                     new SqlConnection(ConfigurationManager.ConnectionStrings["Banking"].ConnectionString))
                 {
                     SqlCommand sqlCommand =
-                        new SqlCommand(@" INSERT INTO Transferencia ( CuentaOrigen, CuentaDestino, FechaHora,Descripcion, Moneda, Estado) 
+                        new SqlCommand(@" INSERT INTO Transferencia ( CuentaOrigen, CuentaDestino, FechaHora,Descripcion, Monto, Estado) 
                                          VALUES (@CuentaOrigen, @CuentaDestino, @FechaHora,@Descripcion, @Moneda, @Estado)",
                                 sqlConnection);
                                 
