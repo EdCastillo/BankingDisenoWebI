@@ -30,7 +30,7 @@ namespace ViewsBanking.Utilities
             return client;
         }
 
-        public async Task<string> Insertar(object obj, string routeObjectPrefix, string HttpActionRoute, string token)
+        protected async Task<string> Insertar(object obj, string routeObjectPrefix, string HttpActionRoute, string token)
         {
             //HttpClient client = GetAuthorizedClient(token);
             HttpClient client = GetAnonymousClient();
@@ -38,23 +38,23 @@ namespace ViewsBanking.Utilities
             var result = await client.PostAsync(API_ROUTE + routeObjectPrefix + HttpActionRoute, new StringContent(json, Encoding.UTF8,"application/json"));
             return await result.Content.ReadAsStringAsync();
         }
-        public async Task Eliminar(int id, string routePrefix, string HttpActionRoute, string token)
+        protected async Task Eliminar(int id, string routePrefix, string HttpActionRoute, string token)
         {
             HttpClient client = GetAuthorizedClient(token);
             await client.DeleteAsync(API_ROUTE + routePrefix + HttpActionRoute + id);
         }
-        public async Task Actualizar(object obj, string routeObjectPrefix, string HttpActionRoute, string token)
+        protected async Task Actualizar(object obj, string routeObjectPrefix, string HttpActionRoute, string token)
         {
             HttpClient client = GetAuthorizedClient(token);
             await client.PutAsync(API_ROUTE + routeObjectPrefix + HttpActionRoute, new StringContent(JsonConvert.SerializeObject(obj),Encoding.UTF8,"application/json"));
         }
-        public async Task<string> GetByID(int id, string routeObjectPrefix, string HttpActionRoute, string token)
+        protected async Task<string> GetByID(int id, string routeObjectPrefix, string HttpActionRoute, string token)
         {
             HttpClient client = GetAuthorizedClient(token);
             var result = await client.GetStringAsync(API_ROUTE + routeObjectPrefix + HttpActionRoute + id.ToString());
             return result;
         }
-        public async Task<string> GetAll(string routeObjectPrefix, string HttpActionRoute, string token)
+        protected async Task<string> GetAll(string routeObjectPrefix, string HttpActionRoute, string token)
         {
             HttpClient client = GetAuthorizedClient(token);
             var result = await client.GetStringAsync(API_ROUTE + routeObjectPrefix + HttpActionRoute);

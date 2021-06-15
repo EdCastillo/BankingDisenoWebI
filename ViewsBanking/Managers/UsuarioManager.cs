@@ -15,10 +15,7 @@ namespace ViewsBanking.Managers
     {
         private const string ROUTE_Object_PREFIX = "login/";
         private const string LoginRoute = "authenticate";
-        public async Task<Usuario> Insertar(Usuario usuario,string token) {
-            Usuario user = JsonConvert.DeserializeObject<Usuario>(await base.Insertar(usuario, ROUTE_Object_PREFIX, "ingresar", token));
-            return user;
-        }
+        
 
         public async Task Eliminar(int id, string token) {
             await base.Eliminar(id,ROUTE_Object_PREFIX,"",token);
@@ -27,7 +24,7 @@ namespace ViewsBanking.Managers
             await base.Actualizar(usuario,ROUTE_Object_PREFIX,"",token);
         }
         public async Task<Usuario> GetByID(int id, string token) {
-            Usuario usuario = (Usuario)await base.GetByID(id,ROUTE_Object_PREFIX,"",token);
+            Usuario usuario = JsonConvert.DeserializeObject<Usuario>(await base.GetByID(id,ROUTE_Object_PREFIX,"",token));
             return usuario;
         }
 
