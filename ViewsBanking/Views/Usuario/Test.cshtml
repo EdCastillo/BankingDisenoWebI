@@ -1,0 +1,82 @@
+﻿
+@{
+    ViewBag.Title = "Test";
+    #region CookiesConfiguration_1.0
+    //Cookies Configuration 1.0 (Configurado para Banking del 4.0 de TV)
+    ViewsBanking.Models.UserCookie user = new ViewsBanking.Models.UserCookie();
+    CreateOrValidate();
+    void CreateOrValidate()
+    {
+        HttpCookie comp = Request.Cookies["UserCookie"];
+        if (comp == null)
+        {
+            //Crear cookies si no existen
+            HttpCookie UserCookie = new HttpCookie("UserCookie");
+            UserCookie["ID"] = "0";
+            UserCookie["Nombre"] = "Invitado";
+            UserCookie["APIToken"] = "NotValid";
+            UserCookie.Expires.AddHours(5);
+            Response.Cookies.Add(UserCookie);
+
+            //cargar cookies existentes
+            HttpCookie reqCookies = Request.Cookies["UserCookie"];
+            user = new ViewsBanking.Models.UserCookie();
+            user.Nombre = reqCookies["Nombre"].ToString();
+            user.ID = Int32.Parse(reqCookies["ID"].ToString());
+            user.APIToken = reqCookies["APIToken"].ToString();
+
+        }
+        else
+        {
+            //cargar cookies existentes
+            HttpCookie reqCookies = Request.Cookies["UserCookie"];
+            user = new ViewsBanking.Models.UserCookie();
+            user.Nombre = reqCookies["Nombre"].ToString();
+            user.ID = Int32.Parse(reqCookies["ID"].ToString());
+            user.APIToken = reqCookies["APIToken"].ToString();
+
+        }
+    }
+    #endregion
+}
+<h1>TEST COOKIES</h1>
+@{
+    HttpCookie read = Request.Cookies["UserCookie"];
+    <h2>Nombre</h2>
+    if (read["Nombre"].ToString() == null)
+    {
+        <h4>null</h4>
+    }
+    else
+    {
+        <h4>@read["Nombre"].ToString()</h4>
+    }
+    <h2>APIToken</h2>
+    if (read["APIToken"].ToString() == null)
+    {
+        <h4>null</h4>
+    }
+    else
+    {
+        <h4>@read["APIToken"].ToString()</h4>
+    }
+    <h2>ID</h2>
+    if (read["ID"].ToString().Equals("0"))
+    {
+        <h4>null</h4>
+
+    }
+    else
+    {
+        <h4>@read["ID"].ToString()</h4>
+    }
+    <h1 class="display-3">Show userByUserInfo</h1>
+    <h2>User ID</h2>
+    <h4>@user.ID</h4>
+    <h2>Token</h2>
+    <h4>@user.APIToken</h4>
+    <h2>Username</h2>
+    <h4>@user.Nombre</h4>
+    <h2>Products</h2>
+    }
+  
