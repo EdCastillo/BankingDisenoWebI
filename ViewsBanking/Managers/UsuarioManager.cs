@@ -13,8 +13,23 @@ namespace ViewsBanking.Managers
 {
     public class UsuarioManager:APIUtilities
     {
-         private const string ROUTE_Object_PREFIX = "login/";
+        private const string ROUTE_Object_PREFIX = "login/";
         private const string LoginRoute = "authenticate";
+        
+
+        public async Task Eliminar(int id, string token) {
+            await base.Eliminar(id,ROUTE_Object_PREFIX,"",token);
+        }
+        public async Task Actualizar(Usuario usuario,string token) {
+            await base.Actualizar(usuario,ROUTE_Object_PREFIX,"",token);
+        }
+        public async Task<Usuario> GetByID(int id, string token) {
+            Usuario usuario = JsonConvert.DeserializeObject<Usuario>(await base.GetByID(id,ROUTE_Object_PREFIX,"",token));
+            return usuario;
+        }
+
+
+
 
 
         public async Task<Usuario> Login(LoginRequest loginRequest) {
@@ -29,21 +44,5 @@ namespace ViewsBanking.Managers
             return JsonConvert.DeserializeObject<Usuario>(await result.Content.ReadAsStringAsync());
         }
 
-        public async Task<Usuario> Validar(string username, string password)
-        {
-            LoginRequest loginRequest = new
-                LoginRequest()
-            { Username = username, Password = password };
-
-            HttpClient httpClient = new HttpClient();
-
-            var response = await
-                httpClient.PostAsync("https://localhost:50266/api/login/authenticate/",
-                new StringContent(JsonConvert.SerializeObject(loginRequest),
-                Encoding.UTF8, "application/json"));
-            return
-                JsonConvert.DeserializeObject<Usuario>
-                (await response.Content.ReadAsStringAsync());
-        }
     }
 }

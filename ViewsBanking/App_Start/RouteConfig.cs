@@ -18,7 +18,11 @@ namespace ViewsBanking
                 url: "authenticate/",
                 defaults:new { controller="Usuario",action= "Authenticate" });
 
-            
+            routes.MapRoute(name:"Test",url:"Test",defaults:new {controller="Usuario",action="Test" });
+
+
+
+            routes.MapRoute(name: "ErrorIndex", url: "ErrorInsert", defaults: new { controller = "Error", action = "Index" });
         }
     }
 }

@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -17,14 +20,19 @@ namespace ViewsBanking.Controllers
             return View();
         }
 
-        public async Task<ActionResult> Authenticate() {
+        public async Task<ActionResult> Authenticate(string username,string password) {
             UsuarioManager manager = new UsuarioManager();
-            Usuario usuario=await manager.Validar("string","string");
-            if (usuario.Codigo == 0) {
+            Usuario usuario = await manager.Login(new LoginRequest { Username = username,Password=password }) ;
+            if (usuario.Codigo == 0)
+            {
 
                 Redirect("");
             }
             return View(usuario);
         }
+        public ActionResult Test() {
+            return View();
+        }
+
     }
 }
