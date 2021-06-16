@@ -32,8 +32,7 @@ namespace ViewsBanking.Utilities
 
         protected async Task<string> Insertar(object obj, string routeObjectPrefix, string HttpActionRoute, string token)
         {
-            //HttpClient client = GetAuthorizedClient(token);
-            HttpClient client = GetAnonymousClient();
+            HttpClient client = GetAuthorizedClient(token);
             string json = JsonConvert.SerializeObject(obj);
             var result = await client.PostAsync(API_ROUTE + routeObjectPrefix + HttpActionRoute, new StringContent(json, Encoding.UTF8,"application/json"));
             return await result.Content.ReadAsStringAsync();
