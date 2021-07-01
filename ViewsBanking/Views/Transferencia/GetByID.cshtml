@@ -1,0 +1,111 @@
+﻿@model ViewsBanking.Models.Transferencia
+
+@{
+    ViewBag.Title = "GetByID";
+    #region CookiesConfiguration_1.0
+    //Cookies Configuration 1.0 (Configurado para Banking del 4.0 de TV)
+    ViewsBanking.Models.UserCookie user = new ViewsBanking.Models.UserCookie();
+    CreateOrValidate();
+    void CreateOrValidate()
+    {
+        HttpCookie comp = Request.Cookies["UserCookie"];
+        if (comp == null)
+        {
+            //Crear cookies si no existen
+            HttpCookie UserCookie = new HttpCookie("UserCookie");
+            UserCookie["ID"] = "0";
+            UserCookie["Nombre"] = "Invitado";
+            UserCookie["APIToken"] = "NotValid";
+            UserCookie.Expires.AddHours(5);
+            Response.Cookies.Add(UserCookie);
+
+            //cargar cookies existentes
+            HttpCookie reqCookies = Request.Cookies["UserCookie"];
+            user = new ViewsBanking.Models.UserCookie();
+            user.Nombre = reqCookies["Nombre"].ToString();
+            user.ID = Int32.Parse(reqCookies["ID"].ToString());
+            user.APIToken = reqCookies["APIToken"].ToString();
+
+        }
+        else
+        {
+            //cargar cookies existentes
+            HttpCookie reqCookies = Request.Cookies["UserCookie"];
+            user = new ViewsBanking.Models.UserCookie();
+            user.Nombre = reqCookies["Nombre"].ToString();
+            user.ID = Int32.Parse(reqCookies["ID"].ToString());
+            user.APIToken = reqCookies["APIToken"].ToString();
+
+        }
+    }
+    #endregion
+}
+
+<h2>GetByID</h2>
+
+<div>
+    <h4>Transferencia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CuentaOrigen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CuentaOrigen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CuentaDestino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CuentaDestino)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaHora)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaHora)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Monto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Monto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Codigo,token=user.APIToken }) |
+    @Html.ActionLink("Back to List", "GetAll", new { token = user.APIToken })
+</p>

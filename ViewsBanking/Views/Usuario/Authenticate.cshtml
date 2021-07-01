@@ -1,7 +1,20 @@
-﻿
+﻿@model ViewsBanking.Models.Usuario
+@using ViewsBanking.Models
 @{
     ViewBag.Title = "Authenticate";
+    HttpCookie UserCookie = new HttpCookie("UserCookie");
+    UserCookie["ID"] = Model.Codigo.ToString();
+    UserCookie["Nombre"] = Model.Nombre;
+    UserCookie["APIToken"] = Model.TOKEN;
+    UserCookie.Expires.AddMinutes(30);
+    Response.Cookies.Add(UserCookie);
+    
+
 }
 
-<h2>Authenticate</h2>
+<script>
+    window.location.href = 'Home';
+
+</script>
+
 

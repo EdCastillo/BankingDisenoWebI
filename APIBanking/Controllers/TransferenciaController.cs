@@ -39,7 +39,7 @@ namespace APIBanking.Controllers
                         transferencia.CuentaOrigen = sqlDataReader.GetInt32(1);
                         transferencia.CuentaDestino = sqlDataReader.GetInt32(2);
                         transferencia.FechaHora = sqlDataReader.GetDateTime(3);
-                        transferencia.Monto = sqlDataReader.GetInt32(5);
+                        transferencia.Monto = sqlDataReader.GetDecimal(5);
                         transferencia.Descripcion = sqlDataReader.GetString(4);
                         transferencia.Estado = sqlDataReader.GetString(6);
                     }
@@ -77,7 +77,7 @@ namespace APIBanking.Controllers
                         transferencia.CuentaOrigen = sqlDataReader.GetInt32(1);
                         transferencia.CuentaDestino = sqlDataReader.GetInt32(2);
                         transferencia.FechaHora = sqlDataReader.GetDateTime(3);
-                        transferencia.Monto = sqlDataReader.GetInt32(5);
+                        transferencia.Monto = sqlDataReader.GetDecimal(5);
                         transferencia.Descripcion = sqlDataReader.GetString(4);
                         transferencia.Estado = sqlDataReader.GetString(6);
                         transferencias.Add(transferencia);

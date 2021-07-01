@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Extensions.Primitives, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.Primitives.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
@@ -191,6 +197,10 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MonedaController.cs" />
+    <Compile Include="Controllers\PagoController.cs" />
+    <Compile Include="Controllers\SesionController.cs" />
+    <Compile Include="Controllers\TransferenciaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -256,7 +266,20 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Usuario\Authenticate.cshtml" />
     <Content Include="Views\Usuario\Test.cshtml" />
+    <Content Include="Views\Usuario\UserForm.cshtml" />
+    <Content Include="Views\Usuario\Login.cshtml" />
+    <Content Include="Views\Moneda\GetAll.cshtml" />
+    <Content Include="Views\Pago\GetAll.cshtml" />
+    <Content Include="Views\Sesion\GetAll.cshtml" />
+    <Content Include="Views\Moneda\GetById.cshtml" />
+    <Content Include="Views\Transferencia\GetAll.cshtml" />
+    <Content Include="Views\Transferencia\GetByID.cshtml" />
+    <Content Include="Views\Transferencia\Create.cshtml" />
+    <Content Include="Views\Transferencia\Edit.cshtml" />
     <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Error\Details.cshtml" />
+    <Content Include="Views\Error\Create.cshtml" />
+    <Content Include="Views\Error\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

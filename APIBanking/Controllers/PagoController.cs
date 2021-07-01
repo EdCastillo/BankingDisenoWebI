@@ -25,7 +25,7 @@ namespace WebApiSegura.Controllers
             try
             {
 
-                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["INTERNET_BANKING"].ConnectionString))
+                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["Banking"].ConnectionString))
                 {
 
                     SqlCommand sqlCommand = new SqlCommand(@"SELECT Codigo, CodigoServicio, CodigoCuenta, CodigoMoneda, FechaHora, Monto FROM Pago WHERE Codigo =@Codigo", sqlConnection);
@@ -69,7 +69,7 @@ namespace WebApiSegura.Controllers
             try
             {
 
-                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["INTERNET_BANKING"].ConnectionString))
+                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["Banking"].ConnectionString))
                 {
 
                     SqlCommand sqlCommand = new SqlCommand(@"SELECT Codigo, CodigoServicio, CodigoCuenta, CodigoMoneda, FechaHora, Monto FROM Pago", sqlConnection);
@@ -87,8 +87,9 @@ namespace WebApiSegura.Controllers
                         pago.Codigo = sqlDataReader.GetInt32(0);
                         pago.CodigoServicio = sqlDataReader.GetInt32(1);
                         pago.CodigoCuenta = sqlDataReader.GetInt32(2);
-                        pago.FechaHora = sqlDataReader.GetDateTime(3);
-                        pago.Monto= sqlDataReader.GetDecimal(4);
+                        pago.CodigoMoneda = sqlDataReader.GetInt32(3);
+                        pago.FechaHora = sqlDataReader.GetDateTime(4);
+                        pago.Monto= sqlDataReader.GetDecimal(5);
                       
 
                         pagos.Add(pago);
@@ -116,7 +117,7 @@ namespace WebApiSegura.Controllers
             try
             {
 
-                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["INTERNET_BANKING"].ConnectionString))
+                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["Banking"].ConnectionString))
                 {
                     SqlCommand sqlCommand = new SqlCommand(@" INSERT INTO Pago ( CodigoServicio, CodigoCuenta, CodigoMoneda, FechaHora, Monto ) VALUES (@CodigoServicio, @CodigoCuenta, @CodigoMoneda, @FechaHora, @Monto)", sqlConnection);
 
@@ -153,7 +154,7 @@ namespace WebApiSegura.Controllers
             try
             {
 
-                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["INTERNET_BANKING"].ConnectionString))
+                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["Banking"].ConnectionString))
                 {
                     SqlCommand sqlCommand = new SqlCommand(@" UPDATE Pago SET CodigoServicio = @CodigoServicio,
                                                                                 CodigoCuenta = @CodigoCuenta, 
@@ -197,7 +198,7 @@ namespace WebApiSegura.Controllers
             try
             {
 
-                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["INTERNET_BANKING"].ConnectionString))
+                using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["Banking"].ConnectionString))
                 {
                     SqlCommand sqlCommand = new SqlCommand(@" DELETE Pago  WHERE Codigo = @Codigo", sqlConnection);
 

@@ -15,7 +15,6 @@ namespace ViewsBanking.Utilities
 
         public const string API_ROUTE= "http://localhost:50266/api/";
 
-
         public HttpClient GetAuthorizedClient(string token) {
             HttpClient client = new HttpClient();
             client.DefaultRequestHeaders.Add("Authorization", token);
@@ -29,7 +28,7 @@ namespace ViewsBanking.Utilities
             client.DefaultRequestHeaders.Add("Accept", "application/json");
             return client;
         }
-
+        
         protected async Task<string> Insertar(object obj, string routeObjectPrefix, string HttpActionRoute, string token)
         {
             HttpClient client = GetAuthorizedClient(token);

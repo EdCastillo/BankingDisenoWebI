@@ -11,7 +11,7 @@ namespace ViewsBanking.Models
         public int CuentaOrigen { get; set; }
         public int CuentaDestino { get; set; }
         public System.DateTime FechaHora { get; set; }
-        public string Descipcion { get; set; }
+        public string Descripcion { get; set; }
         public decimal Monto { get; set; }
         public string Estado { get; set; }
 

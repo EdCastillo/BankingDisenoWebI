@@ -1,7 +1,7 @@
-﻿@model IEnumerable<ViewsBanking.Models.Error>
+﻿@model ViewsBanking.Models.Error
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Details";
     //AGREGAR COOKIES
     #region CookiesConfiguration_1.0
     //Cookies Configuration 1.0 (Configurado para Banking del 4.0 de TV)
@@ -42,72 +42,74 @@
     #endregion
 }
 
-<h2>Index</h2>
+<h2>Details</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
+<div>
+    <h4>Error</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
             @Html.DisplayNameFor(model => model.Codigo)
-        </th>
-        <th>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.CodigoUsuario)
-        </th>
-        <th>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoUsuario)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.FechaHora)
-        </th>
-        <th>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaHora)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Fuente)
-        </th>
-        <th>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fuente)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Vista)
-        </th>
-        <th>
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Vista)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Accion)
-        </th>
-        <th></th>
-    </tr>
+        </dt>
 
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Codigo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CodigoUsuario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaHora)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fuente)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Vista)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Accion)
-        </td>
-        <td>
-            
-            @{
-                //CAMBIAR A ESTE BLOQUE DE CODIGO
-                @Html.ActionLink("Edit", "Edit", new { id = item.Codigo, token = user.APIToken })
-                @Html.ActionLink("Details", "Details", new { id = item.Codigo, token=user.APIToken })
-                @Html.ActionLink("Delete", "Delete", new { id = item.Codigo, token=user.APIToken })
-            }
+        <dd>
+            @Html.DisplayFor(model => model.Accion)
+        </dd>
 
-        </td>
-    </tr>
-            }
-
-</table>
+    </dl>
+</div>
+<p>
+    @{
+        //CAMBIAR BLOQUE DE CODIGO
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Codigo, token = user.APIToken })
+        @Html.ActionLink("Back to List", "Index", new { id = Model.Codigo, token = user.APIToken })
+     }
+</p>

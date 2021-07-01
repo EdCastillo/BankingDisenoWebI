@@ -1,8 +1,6 @@
-﻿@model IEnumerable<ViewsBanking.Models.Error>
-
+﻿@model IEnumerable<ViewsBanking.Models.Moneda>
+@using ViewsBanking.Managers;
 @{
-    ViewBag.Title = "Index";
-    //AGREGAR COOKIES
     #region CookiesConfiguration_1.0
     //Cookies Configuration 1.0 (Configurado para Banking del 4.0 de TV)
     ViewsBanking.Models.UserCookie user = new ViewsBanking.Models.UserCookie();
@@ -40,9 +38,11 @@
         }
     }
     #endregion
+
+    ViewBag.Title = "GetAll";
 }
 
-<h2>Index</h2>
+<h2>GetAll</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -53,61 +53,30 @@
             @Html.DisplayNameFor(model => model.Codigo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CodigoUsuario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.FechaHora)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fuente)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.Descripcion)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Vista)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Accion)
+            @Html.DisplayNameFor(model => model.Estado)
         </th>
         <th></th>
     </tr>
-
-@foreach (var item in Model)
-{
+@foreach (var item in Model) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Codigo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CodigoUsuario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaHora)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fuente)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Descripcion)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Vista)
+            @Html.DisplayFor(modelItem => item.Estado)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Accion)
-        </td>
-        <td>
-            
-            @{
-                //CAMBIAR A ESTE BLOQUE DE CODIGO
-                @Html.ActionLink("Edit", "Edit", new { id = item.Codigo, token = user.APIToken })
-                @Html.ActionLink("Details", "Details", new { id = item.Codigo, token=user.APIToken })
-                @Html.ActionLink("Delete", "Delete", new { id = item.Codigo, token=user.APIToken })
-            }
-
+            <a href="moneda/Byid?id=@item.Codigo&token=@user.APIToken">Ver</a>
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) 
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>
-            }
+}
 
 </table>

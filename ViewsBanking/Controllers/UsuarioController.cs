@@ -19,11 +19,21 @@ namespace ViewsBanking.Controllers
         {
             return View();
         }
+        public ActionResult UserForm()
+        {
+            return View();
+        }
+        public async Task<ActionResult> Registro(string identificacion,string nombre,string username,string password, string email, string fechaNacimiento)
+        {
+            UsuarioManager manager = new UsuarioManager();
+            Usuario usuario = await manager.Insertar(new Usuario { Identificacion = identificacion, Email = email, Estado = "A", FechaNacimiento = DateTime.Parse(fechaNacimiento), Nombre = nombre, Password = password, Username = username });
+            return View(usuario);
+        }
 
         public async Task<ActionResult> Authenticate(string username,string password) {
             UsuarioManager manager = new UsuarioManager();
             Usuario usuario = await manager.Login(new LoginRequest { Username = username,Password=password }) ;
-            if (usuario.Codigo == 0)
+            if (usuario==null)
             {
 
                 Redirect("");
