@@ -72,7 +72,6 @@ namespace APIBanking.Controllers
             }
         }
 
-
         [HttpPost]
         public IHttpActionResult insert(Error error) {
             if (error == null) {

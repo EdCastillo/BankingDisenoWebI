@@ -1,9 +1,7 @@
-﻿@model IEnumerable<ViewsBanking.Models.Error>
+﻿@model IEnumerable<ViewsBanking.Models.Abono>
 
 @{
     ViewBag.Title = "Index";
-
-    //AGREGAR COOKIES
     #region CookiesConfiguration_1.0
     //Cookies Configuration 1.0 (Configurado para Banking del 4.0 de TV)
     ViewsBanking.Models.UserCookie user = new ViewsBanking.Models.UserCookie();
@@ -54,61 +52,40 @@
             @Html.DisplayNameFor(model => model.Codigo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CodigoUsuario)
+            @Html.DisplayNameFor(model => model.CodigoPrestamo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FechaHora)
+            @Html.DisplayNameFor(model => model.Fecha)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Fuente)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Vista)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Accion)
+            @Html.DisplayNameFor(model => model.Cantidad)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model)
-{
+@foreach (var item in Model) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Codigo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CodigoUsuario)
+            @Html.DisplayFor(modelItem => item.CodigoPrestamo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.FechaHora)
+            @Html.DisplayFor(modelItem => item.Fecha)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Fuente)
+            @Html.DisplayFor(modelItem => item.Cantidad)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Vista)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Accion)
-        </td>
-        <td>
-            
             @{
                 //CAMBIAR A ESTE BLOQUE DE CODIGO
                 @Html.ActionLink("Edit", "Edit", new { id = item.Codigo, token = user.APIToken })
-                @Html.ActionLink("Details", "Details", new { id = item.Codigo, token=user.APIToken })
-                @Html.ActionLink("Delete", "Delete", new { id = item.Codigo, token=user.APIToken })
+                @Html.ActionLink("Details", "Details", new { id = item.Codigo, token = user.APIToken })
+                @Html.ActionLink("Delete", "Delete", new { id = item.Codigo, token = user.APIToken })
             }
-
         </td>
     </tr>
-            }
+}
 
 </table>

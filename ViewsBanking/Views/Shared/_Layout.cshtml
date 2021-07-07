@@ -47,7 +47,12 @@
             }
         }
         #endregion
-    }
+
+        void getBrowser() {
+            HttpBrowserCapabilitiesBase browser = Request.Browser;
+            
+        }
+        }
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <a class="navbar-brand" href="moneda?token=@user.APIToken">Moneda</a>
@@ -56,6 +61,7 @@
             <a class="navbar-brand" href="pago?token=@user.APIToken">Pago</a>
             <a class="navbar-brand" href="sesion?token=@user.APIToken">Sesion</a>
             <a class="navbar-brand" href="transferencia?token=@user.APIToken">Transferencia</a>
+            <a class="navbar-brand" href="abono?token=@user.APIToken">Abono</a>
         </div>
     </div>
     <div class="container body-content">

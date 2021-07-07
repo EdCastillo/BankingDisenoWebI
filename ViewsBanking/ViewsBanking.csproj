@@ -195,6 +195,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AbonoController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MonedaController.cs" />
@@ -205,6 +206,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Managers\AbonoManager.cs" />
     <Compile Include="Managers\CuentaManager.cs" />
     <Compile Include="Managers\ErrorManager.cs" />
     <Compile Include="Managers\EstadisticaManager.cs" />
@@ -214,6 +216,7 @@
     <Compile Include="Managers\SesionManager.cs" />
     <Compile Include="Managers\TransferenciaManager.cs" />
     <Compile Include="Managers\UsuarioManager.cs" />
+    <Compile Include="Models\Abono.cs" />
     <Compile Include="Models\Cuenta.cs" />
     <Compile Include="Models\Error.cs" />
     <Compile Include="Models\Estadistica.cs" />
@@ -280,6 +283,10 @@
     <Content Include="Views\Error\Details.cshtml" />
     <Content Include="Views\Error\Create.cshtml" />
     <Content Include="Views\Error\Edit.cshtml" />
+    <Content Include="Views\Abono\Index.cshtml" />
+    <Content Include="Views\Abono\Details.cshtml" />
+    <Content Include="Views\Abono\Create.cshtml" />
+    <Content Include="Views\Abono\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

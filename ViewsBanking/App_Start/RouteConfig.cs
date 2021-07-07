@@ -113,6 +113,31 @@ namespace ViewsBanking
                 name: "errorEditar", 
                 url: "error/edit", 
                 defaults: new { controller = "Error", action = "Edit" });
+
+
+
+            //ABONO
+            routes.MapRoute(
+                name: "AbonoGetAll",
+                url: "abono",
+                defaults: new { controller = "Abono", action = "Index" });
+
+            routes.MapRoute(
+                name: "AbonoGetByID",
+                url: "abono/ByID",
+                defaults: new { controller = "Abono", action = "Details" });
+            routes.MapRoute(
+                name: "AbonoDelete",
+                url: "abono/delete",
+                defaults: new { controller = "Abono", action = "Delete" });
+            routes.MapRoute(
+                name: "AbonoCrear",
+                url: "abono/crear",
+                defaults: new { controller = "Abono", action = "Create" });
+            routes.MapRoute(
+                name: "AbonoEditar",
+                url: "abono/edit",
+                defaults: new { controller = "Abono", action = "Edit" });
         }
     }
 }
