@@ -39,7 +39,7 @@ namespace ViewsBanking.Controllers
         {
                 AbonoManager manager = new AbonoManager();
                 await manager.Insertar(abono, token);
-                return RedirectToAction("Index",token);
+                return RedirectToAction("Index",new { token=token});
         }
 
         // GET: Abono/Edit/5
@@ -64,7 +64,7 @@ namespace ViewsBanking.Controllers
         {
             AbonoManager manager = new AbonoManager();
             await manager.Eliminar(id,token);
-            return RedirectToAction("Index",token);
+            return RedirectToAction("Index",new{token=token});
         }
 
         

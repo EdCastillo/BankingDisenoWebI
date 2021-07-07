@@ -12,28 +12,30 @@ namespace APIBanking.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Moneda
+    public partial class Prestamo
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Moneda()
+        public Prestamo()
         {
-            this.Cuenta = new HashSet<Cuenta>();
-            this.Pago = new HashSet<Pago>();
-            this.Prestamo = new HashSet<Prestamo>();
-            this.Sobre = new HashSet<Sobre>();
+            this.Abono = new HashSet<Abono>();
+            this.Abono1 = new HashSet<Abono>();
         }
     
         public int Codigo { get; set; }
-        public string Descripcion { get; set; }
-        public string Estado { get; set; }
+        public int CodigoMoneda { get; set; }
+        public int CodigoUsuario { get; set; }
+        public decimal MontoTotal { get; set; }
+        public decimal TasaInteres { get; set; }
+        public int NumeroCuotas { get; set; }
+        public System.DateTime FechaEmision { get; set; }
+        public int CodigoTipo { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cuenta> Cuenta { get; set; }
+        public virtual ICollection<Abono> Abono { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pago> Pago { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Prestamo> Prestamo { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sobre> Sobre { get; set; }
+        public virtual ICollection<Abono> Abono1 { get; set; }
+        public virtual Moneda Moneda { get; set; }
+        public virtual Usuario Usuario { get; set; }
+        public virtual Tipo Tipo { get; set; }
     }
 }

@@ -36,5 +36,15 @@ namespace APIBanking.Models
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Transferencia> Transferencia { get; set; }
         public virtual DbSet<Usuario> Usuario { get; set; }
+        public virtual DbSet<Abono> Abono { get; set; }
+        public virtual DbSet<Categoria> Categoria { get; set; }
+        public virtual DbSet<Prestamo> Prestamo { get; set; }
+        public virtual DbSet<Proveedor> Proveedor { get; set; }
+        public virtual DbSet<Punto> Punto { get; set; }
+        public virtual DbSet<Seguridad> Seguridad { get; set; }
+        public virtual DbSet<SINPE> SINPE { get; set; }
+        public virtual DbSet<Sobre> Sobre { get; set; }
+        public virtual DbSet<Tarjeta> Tarjeta { get; set; }
+        public virtual DbSet<Tipo> Tipo { get; set; }
     }
 }

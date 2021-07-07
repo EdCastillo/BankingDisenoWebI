@@ -23,8 +23,12 @@ namespace APIBanking.Models
         public int Codigo { get; set; }
         public string Descripcion { get; set; }
         public string Estado { get; set; }
+        public Nullable<int> CodigoProveedor { get; set; }
+        public Nullable<int> CodigoCategoria { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Pago> Pago { get; set; }
+        public virtual Categoria Categoria { get; set; }
+        public virtual Proveedor Proveedor { get; set; }
     }
 }

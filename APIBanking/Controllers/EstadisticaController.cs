@@ -21,7 +21,7 @@ namespace WebApiSegura.Controllers
             try
             {
                 using (SqlConnection sqlConnection = new
-                    SqlConnection(ConfigurationManager.ConnectionStrings["INTERNET_BANKING"].ConnectionString))
+                    SqlConnection(ConfigurationManager.ConnectionStrings["BANKING"].ConnectionString))
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"SELECT Codigo,CodigoUsuario,FechaHora,Navegador,
                                                              PlataformaDispositivo,FabricanteDispositivo, Vista,Accion
@@ -64,7 +64,7 @@ namespace WebApiSegura.Controllers
             try
             {
                 using (SqlConnection sqlConnection = new
-                    SqlConnection(ConfigurationManager.ConnectionStrings["INTERNET_BANKING"].ConnectionString))
+                    SqlConnection(ConfigurationManager.ConnectionStrings["BANKING"].ConnectionString))
                 {
                     SqlCommand sqlCommand = new SqlCommand(@"SELECT Codigo,CodigoUsuario,FechaHora,Navegador,
                                                              PlataformaDispositivo,FabricanteDispositivo, Vista,Accion
@@ -107,7 +107,7 @@ namespace WebApiSegura.Controllers
             try
             {
                 using (SqlConnection sqlConnection =
-                    new SqlConnection(ConfigurationManager.ConnectionStrings["INTERNET_BANKING"].ConnectionString))
+                    new SqlConnection(ConfigurationManager.ConnectionStrings["BANKING"].ConnectionString))
                 {
                     SqlCommand sqlCommand =
                         new SqlCommand(@" INSERT INTO Estadistica (CodigoUsuario,FechaHora,Navegador,
@@ -148,7 +148,7 @@ namespace WebApiSegura.Controllers
             try
             {
                 using (SqlConnection sqlConnection =
-                    new SqlConnection(ConfigurationManager.ConnectionStrings["INTERNET_BANKING"].ConnectionString))
+                    new SqlConnection(ConfigurationManager.ConnectionStrings["BANKING"].ConnectionString))
                 {
                     SqlCommand sqlCommand =
                         new SqlCommand(@" UPDATE Estadistica 
@@ -196,7 +196,7 @@ namespace WebApiSegura.Controllers
             try
             {
                 using (SqlConnection sqlConnection =
-                    new SqlConnection(ConfigurationManager.ConnectionStrings["INTERNET_BANKING"].ConnectionString))
+                    new SqlConnection(ConfigurationManager.ConnectionStrings["BANKING"].ConnectionString))
                 {
                     SqlCommand sqlCommand =
                         new SqlCommand(@" DELETE Estadistica WHERE Codigo = @Codigo",

@@ -12,17 +12,14 @@ namespace APIBanking.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Transferencia
+    public partial class Seguridad
     {
         public int Codigo { get; set; }
-        public int CuentaOrigen { get; set; }
-        public int CuentaDestino { get; set; }
-        public System.DateTime FechaHora { get; set; }
-        public decimal Monto { get; set; }
-        public string Estado { get; set; }
-        public string Descripcion { get; set; }
+        public int CodigoUsuario { get; set; }
+        public string Lllamada { get; set; }
+        public string Token { get; set; }
+        public string OTP { get; set; }
     
-        public virtual Cuenta Cuenta { get; set; }
-        public virtual Cuenta Cuenta1 { get; set; }
+        public virtual Usuario Usuario { get; set; }
     }
 }

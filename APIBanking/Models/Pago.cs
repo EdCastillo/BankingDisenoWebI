@@ -18,7 +18,7 @@ namespace APIBanking.Models
         public int CodigoServicio { get; set; }
         public int CodigoCuenta { get; set; }
         public int CodigoMoneda { get; set; }
-        public DateTime FechaHora { get; set; }
+        public System.DateTime FechaHora { get; set; }
         public decimal Monto { get; set; }
     
         public virtual Cuenta Cuenta { get; set; }

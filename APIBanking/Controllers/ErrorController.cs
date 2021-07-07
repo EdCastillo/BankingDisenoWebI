@@ -148,8 +148,7 @@ namespace APIBanking.Controllers
                     SqlCommand sqlCommand = new SqlCommand(@"update Error set CodigoUsuario=@CodigoUsuario,Fuente=@Fuente,Descripcion=@Descripcion,Vista=@Vista,Accion=@Accion where Codigo=@Codigo", sqlConnection);
                     sqlCommand.Parameters.AddWithValue("@Codigo",error.Codigo);
                     sqlCommand.Parameters.AddWithValue("@CodigoUsuario", error.CodigoUsuario);
-                    //Error al actualizar fecha por formato de entrada
-                    //sqlCommand.Parameters.AddWithValue("@FechaHora", error.Descripcion);
+                    sqlCommand.Parameters.AddWithValue("@FechaHora", error.FechaHora);
                     sqlCommand.Parameters.AddWithValue("@Fuente", error.Fuente);
                     sqlCommand.Parameters.AddWithValue("@Descripcion", error.Descripcion);
                     sqlCommand.Parameters.AddWithValue("@Vista", error.Vista);

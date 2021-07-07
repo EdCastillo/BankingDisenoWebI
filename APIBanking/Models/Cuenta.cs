@@ -20,6 +20,10 @@ namespace APIBanking.Models
             this.Pago = new HashSet<Pago>();
             this.Transferencia = new HashSet<Transferencia>();
             this.Transferencia1 = new HashSet<Transferencia>();
+            this.SINPE = new HashSet<SINPE>();
+            this.Punto = new HashSet<Punto>();
+            this.Sobre = new HashSet<Sobre>();
+            this.Tarjeta = new HashSet<Tarjeta>();
         }
     
         public int Codigo { get; set; }
@@ -38,5 +42,13 @@ namespace APIBanking.Models
         public virtual ICollection<Transferencia> Transferencia { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Transferencia> Transferencia1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<SINPE> SINPE { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Punto> Punto { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Sobre> Sobre { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Tarjeta> Tarjeta { get; set; }
     }
 }

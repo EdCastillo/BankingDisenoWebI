@@ -26,6 +26,29 @@
         <AssociationConnector Association="BankingModel.FK_Pago_Moneda" ManuallyRouted="false" />
         <AssociationConnector Association="BankingModel.FK_Pago_Servicio" ManuallyRouted="false" />
         <AssociationConnector Association="BankingModel.FK_Sesion_Usuario" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BankingModel.Abono" Width="1.5" PointX="10.25" PointY="12.125" />
+        <EntityTypeShape EntityType="BankingModel.Categoria" Width="1.5" PointX="0.75" PointY="12.875" />
+        <EntityTypeShape EntityType="BankingModel.Prestamo" Width="1.5" PointX="8" PointY="11.375" />
+        <EntityTypeShape EntityType="BankingModel.Proveedor" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="BankingModel.Punto" Width="1.5" PointX="5.25" PointY="12.625" />
+        <EntityTypeShape EntityType="BankingModel.Seguridad" Width="1.5" PointX="3" PointY="19" />
+        <EntityTypeShape EntityType="BankingModel.SINPE" Width="1.5" PointX="5.25" PointY="15.625" />
+        <EntityTypeShape EntityType="BankingModel.Sobre" Width="1.5" PointX="8.25" PointY="7.5" />
+        <EntityTypeShape EntityType="BankingModel.Tarjeta" Width="1.5" PointX="5.25" PointY="3.875" />
+        <EntityTypeShape EntityType="BankingModel.Tipo" Width="1.5" PointX="5.75" PointY="19.25" />
+        <AssociationConnector Association="BankingModel.FK__Abono__CodigoPre__3E1D39E1" />
+        <AssociationConnector Association="BankingModel.FK__Abono__CodigoPre__40058253" />
+        <AssociationConnector Association="BankingModel.FK_Servicio_Categoria" />
+        <AssociationConnector Association="BankingModel.FK__SINPE__CodigoCue__339FAB6E" />
+        <AssociationConnector Association="BankingModel.FK_Punto_Cuenta" />
+        <AssociationConnector Association="BankingModel.FK_Sobres_Cuenta" />
+        <AssociationConnector Association="BankingModel.FK_Tarjeta_Cuenta" />
+        <AssociationConnector Association="BankingModel.FK_Prestamo_Moneda" />
+        <AssociationConnector Association="BankingModel.FK_Sobres_Moneda" />
+        <AssociationConnector Association="BankingModel.FK_Prestamo_Cuenta" />
+        <AssociationConnector Association="BankingModel.FK_Prestamo_Tipo" />
+        <AssociationConnector Association="BankingModel.FK_Servicio_Proveedor" />
+        <AssociationConnector Association="BankingModel.FK_Seguridad_Usuario" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -12,17 +12,21 @@ namespace APIBanking.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Transferencia
+    public partial class Proveedor
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Proveedor()
+        {
+            this.Servicio = new HashSet<Servicio>();
+        }
+    
         public int Codigo { get; set; }
-        public int CuentaOrigen { get; set; }
-        public int CuentaDestino { get; set; }
-        public System.DateTime FechaHora { get; set; }
-        public decimal Monto { get; set; }
-        public string Estado { get; set; }
+        public string NombreProveedor { get; set; }
+        public string TelefonoProveedor { get; set; }
+        public string CorreoProveedor { get; set; }
         public string Descripcion { get; set; }
     
-        public virtual Cuenta Cuenta { get; set; }
-        public virtual Cuenta Cuenta1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Servicio> Servicio { get; set; }
     }
 }
