@@ -8,7 +8,7 @@ namespace ViewsBanking.Models
     public partial class Estadistica
     {
         public int Codigo { get; set; }
-        public int CodigoUsuairo { get; set; }
+        public int CodigoUsuario { get; set; }
         public System.DateTime FechaHora { get; set; }
         public string Navegador { get; set; }
         public string PlataformaDispositivo { get; set; }

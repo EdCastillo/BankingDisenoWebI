@@ -115,6 +115,28 @@ namespace ViewsBanking
                 defaults: new { controller = "Error", action = "Edit" });
 
 
+            //TIPO
+            routes.MapRoute(
+                name: "TipoGetAll",
+                url: "tipo",
+                defaults: new { controller = "Tipo", action = "Index" });
+
+            routes.MapRoute(
+                name: "TipoGetByID",
+                url: "tipo/ByID",
+                defaults: new { controller = "Tipo", action = "Details" });
+            routes.MapRoute(
+                name: "TipoDelete",
+                url: "tipo/delete",
+                defaults: new { controller = "Tipo", action = "Delete" });
+            routes.MapRoute(
+                name: "TipoCrear",
+                url: "tipo/crear",
+                defaults: new { controller = "Tipo", action = "Create" });
+            routes.MapRoute(
+                name: "TipoEditar",
+                url: "tipo/edit",
+                defaults: new { controller = "Tipo", action = "Edit" });
 
             //ABONO
             routes.MapRoute(

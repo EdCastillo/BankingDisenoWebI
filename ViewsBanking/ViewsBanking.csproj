@@ -201,6 +201,7 @@
     <Compile Include="Controllers\MonedaController.cs" />
     <Compile Include="Controllers\PagoController.cs" />
     <Compile Include="Controllers\SesionController.cs" />
+    <Compile Include="Controllers\TipoController.cs" />
     <Compile Include="Controllers\TransferenciaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -214,6 +215,7 @@
     <Compile Include="Managers\PagoManager.cs" />
     <Compile Include="Managers\ServicioManager.cs" />
     <Compile Include="Managers\SesionManager.cs" />
+    <Compile Include="Managers\TipoManager.cs" />
     <Compile Include="Managers\TransferenciaManager.cs" />
     <Compile Include="Managers\UsuarioManager.cs" />
     <Compile Include="Models\Abono.cs" />
@@ -225,6 +227,7 @@
     <Compile Include="Models\Pago.cs" />
     <Compile Include="Models\Servicio.cs" />
     <Compile Include="Models\Sesion.cs" />
+    <Compile Include="Models\Tipo.cs" />
     <Compile Include="Models\Transferencia.cs" />
     <Compile Include="Models\UserCookie.cs" />
     <Compile Include="Models\Usuario.cs" />
@@ -287,6 +290,10 @@
     <Content Include="Views\Abono\Details.cshtml" />
     <Content Include="Views\Abono\Create.cshtml" />
     <Content Include="Views\Abono\Edit.cshtml" />
+    <Content Include="Views\Tipo\Index.cshtml" />
+    <Content Include="Views\Tipo\Details.cshtml" />
+    <Content Include="Views\Tipo\Create.cshtml" />
+    <Content Include="Views\Tipo\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
