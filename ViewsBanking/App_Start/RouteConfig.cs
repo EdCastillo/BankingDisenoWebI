@@ -160,6 +160,54 @@ namespace ViewsBanking
                 name: "AbonoEditar",
                 url: "abono/edit",
                 defaults: new { controller = "Abono", action = "Edit" });
+
+            //Seguridad
+
+            routes.MapRoute(
+                name: "SeguridadGetAll",
+                url: "seguridad",
+                defaults: new { controller = "Seguridad", action = "Index" });
+
+            routes.MapRoute(
+                name: "SeguridadGetByID",
+                url: "seguridad/ByID",
+                defaults: new { controller = "Seguridad", action = "Details" });
+            routes.MapRoute(
+                name: "SeguridadDelete",
+                url: "seguridad/delete",
+                defaults: new { controller = "Seguridad", action = "Delete" });
+            routes.MapRoute(
+                name: "SeguridadCrear",
+                url: "seguridad/crear",
+                defaults: new { controller = "Seguridad", action = "Create" });
+            routes.MapRoute(
+                name: "seguridadEditar",
+                url: "seguridad/edit",
+                defaults: new { controller = "Seguridad", action = "Edit" });
+
+
+            //Prestamo
+            routes.MapRoute(
+                 name: "PrestamoGetAll",
+                 url: "prestamo",
+                 defaults: new { controller = "Prestamo", action = "Index" });
+
+            routes.MapRoute(
+                name: "PrestamoGetByID",
+                url: "prestamo/ByID",
+                defaults: new { controller = "Prestamo", action = "Details" });
+            routes.MapRoute(
+                name: "PrestamoDelete",
+                url: "prestamo/delete",
+                defaults: new { controller = "Prestamo", action = "Delete" });
+            routes.MapRoute(
+                name: "PrestamoCrear",
+                url: "prestamo/crear",
+                defaults: new { controller = "Prestamo", action = "Create" });
+            routes.MapRoute(
+                name: "prestamoEditar",
+                url: "prestamo/edit",
+                defaults: new { controller = "Prestamo", action = "Edit" });
         }
     }
 }
