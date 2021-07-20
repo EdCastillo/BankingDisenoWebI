@@ -19,7 +19,7 @@ namespace APIBanking.Models
         public decimal Saldo { get; set; }
         public int CodigoMoneda { get; set; }
         public System.DateTime FechaCreacion { get; set; }
-        public int Descripcion { get; set; }
+        public string Descripcion { get; set; }
         public string Estado { get; set; }
     
         public virtual Cuenta Cuenta { get; set; }

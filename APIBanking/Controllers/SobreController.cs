@@ -39,8 +39,8 @@ namespace APIBanking.Controllers
                         sobre.CodigoCuenta = sqlDataReader.GetInt32(1);
                         sobre.Saldo = sqlDataReader.GetDecimal(2);
                         sobre.CodigoMoneda = sqlDataReader.GetInt32(3);
-                        sobre.FechaCreacion = sqlDataReader.GetDateTime(5);
-                        sobre.Descripcion = sqlDataReader.GetString(4);
+                        sobre.FechaCreacion = sqlDataReader.GetDateTime(4);
+                        sobre.Descripcion = sqlDataReader.GetString(5);
                         sobre.Estado = sqlDataReader.GetString(6);
                     }
 
@@ -78,8 +78,8 @@ namespace APIBanking.Controllers
                         sobre.CodigoCuenta = sqlDataReader.GetInt32(1);
                         sobre.Saldo = sqlDataReader.GetDecimal(2);
                         sobre.CodigoMoneda = sqlDataReader.GetInt32(3);
-                        sobre.FechaCreacion = sqlDataReader.GetDateTime(5);
-                        sobre.Descripcion = sqlDataReader.GetString(4);
+                        sobre.FechaCreacion = sqlDataReader.GetDateTime(4);
+                        sobre.Descripcion = sqlDataReader.GetString(5);
                         sobre.Estado = sqlDataReader.GetString(6);
                         sobres.Add(sobre);
                     }
@@ -151,7 +151,7 @@ namespace APIBanking.Controllers
                                                             Saldo = @Saldo,
                                                             CodigoMoneda = @CodigoMoneda,
                                                             FechaCreacion = @FechaCreacion,
-                                                            Descripcion = @Moneda,
+                                                            Descripcion = @Descripcion,
                                                             Estado = @Estado 
                                           WHERE Codigo = @Codigo",
                                          sqlConnection);
