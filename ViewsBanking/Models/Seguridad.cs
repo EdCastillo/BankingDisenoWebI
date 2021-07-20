@@ -8,11 +8,11 @@ namespace ViewsBanking.Models
     public partial class Seguridad
     {
 
-        public int codigo { get; set; }
+        public int Codigo { get; set; }
 
         public int CodigoUsuario { get; set; }
 
-        public string Lllamada { get; set; }
+        public string Llamada { get; set; }
 
         public string Token { get; set; }
 

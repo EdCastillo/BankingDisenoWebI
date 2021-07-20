@@ -114,6 +114,9 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @{
+        //CAMBIAR BLOQUE DE CODIGO
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Codigo, token = user.APIToken })
+        @Html.ActionLink("Back to List", "Index", new { id = Model.Codigo, token = user.APIToken })
+    }
 </p>

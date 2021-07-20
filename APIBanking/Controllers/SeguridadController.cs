@@ -26,7 +26,7 @@ namespace APIBanking.Controllers
                 Seguridad seguridad = new Seguridad();
                 using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["Banking"].ConnectionString))
                 {
-                    SqlCommand sqlCommand = new SqlCommand(@"SELECT Codigo,CodigoUsuario,Lllamada,Token,OTP from Seguridad where Codigo=@Codigo", sqlConnection);
+                    SqlCommand sqlCommand = new SqlCommand(@"SELECT Codigo,CodigoUsuario,Llamada,Token,OTP from Seguridad where Codigo=@Codigo", sqlConnection);
                     sqlCommand.Parameters.AddWithValue("@Codigo", id);
                     sqlConnection.Open();
                     SqlDataReader reader = sqlCommand.ExecuteReader();
@@ -37,7 +37,7 @@ namespace APIBanking.Controllers
                         {
                             Codigo = reader.GetInt32(0),
                             CodigoUsuario = reader.GetInt32(1),
-                            Lllamada = reader.GetString(2),
+                            Llamada = reader.GetString(2),
                             Token = reader.GetString(3),
                             OTP = reader.GetString(3)
                         };
@@ -65,13 +65,13 @@ namespace APIBanking.Controllers
                 List<Seguridad> list = new List<Seguridad>();
                 using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["Banking"].ConnectionString))
                 {
-                    SqlCommand sqlCommand = new SqlCommand(@"SELECT Codigo,CodigoUsuario,Lllamada,Token,OTP from Seguridad", sqlConnection);
+                    SqlCommand sqlCommand = new SqlCommand(@"SELECT Codigo,CodigoUsuario,Llamada,Token,OTP from Seguridad", sqlConnection);
                     sqlConnection.Open();
                     SqlDataReader reader = sqlCommand.ExecuteReader();
 
                     while (reader.Read())
                     {
-                        list.Add(new Seguridad { Codigo = reader.GetInt32(0), CodigoUsuario = reader.GetInt32(1), Lllamada = reader.GetString(2), Token = reader.GetString(3), OTP = reader.GetString(4) });
+                        list.Add(new Seguridad { Codigo = reader.GetInt32(0), CodigoUsuario = reader.GetInt32(1), Llamada = reader.GetString(2), Token = reader.GetString(3), OTP = reader.GetString(4) });
                     }
                     sqlConnection.Close();
                 }
@@ -95,9 +95,9 @@ namespace APIBanking.Controllers
             {
                 using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["Banking"].ConnectionString))
                 {
-                    SqlCommand sqlCommand = new SqlCommand(@"insert into Seguridad(CodigoUsuario,Lllamada,Token,OTP) output inserted.Codigo values(@CodigoUsuario,@Lllamada,@Token,@OTP)", sqlConnection);
+                    SqlCommand sqlCommand = new SqlCommand(@"insert into Seguridad(CodigoUsuario,Llamada,Token,OTP) output inserted.Codigo values(@CodigoUsuario,@Llamada,@Token,@OTP)", sqlConnection);
                     sqlCommand.Parameters.AddWithValue("@CodigoUsuario", seguridad.CodigoUsuario);
-                    sqlCommand.Parameters.AddWithValue("@Lllamada", seguridad.Lllamada);
+                    sqlCommand.Parameters.AddWithValue("@Llamada", seguridad.Llamada);
                     sqlCommand.Parameters.AddWithValue("@Token", seguridad.Token);
                     sqlCommand.Parameters.AddWithValue("@OTP", seguridad.OTP);
 
@@ -161,10 +161,10 @@ namespace APIBanking.Controllers
                 using (SqlConnection sqlConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["Banking"].ConnectionString))
                 {
 
-                    SqlCommand sqlCommand = new SqlCommand(@"update Seguridad set CodigoUsuario=@CodigoUsuario,Lllamada=@Lllamada,Token=@Token,OTP=@OTP where Codigo=@Codigo", sqlConnection);
+                    SqlCommand sqlCommand = new SqlCommand(@"update Seguridad set CodigoUsuario=@CodigoUsuario,Llamada=@Llamada,Token=@Token,OTP=@OTP where Codigo=@Codigo", sqlConnection);
                     sqlCommand.Parameters.AddWithValue("@Codigo", seguridad.Codigo);
                     sqlCommand.Parameters.AddWithValue("@CodigoUsuario", seguridad.CodigoUsuario);
-                    sqlCommand.Parameters.AddWithValue("@Lllamada ", seguridad.Lllamada);
+                    sqlCommand.Parameters.AddWithValue("@Llamada ", seguridad.Llamada);
                     sqlCommand.Parameters.AddWithValue("@Token ", seguridad.Token);
                     sqlCommand.Parameters.AddWithValue("@OTP ", seguridad.OTP);
 

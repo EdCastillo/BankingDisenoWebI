@@ -48,11 +48,11 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.codigo)
+            @Html.DisplayNameFor(model => model.Codigo)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.codigo)
+            @Html.DisplayFor(model => model.Codigo)
         </dd>
 
         <dt>
@@ -64,11 +64,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Lllamada)
+            @Html.DisplayNameFor(model => model.Llamada)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Lllamada)
+            @Html.DisplayFor(model => model.Llamada)
         </dd>
 
         <dt>
@@ -90,6 +90,9 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @{
+        //CAMBIAR BLOQUE DE CODIGO
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Codigo, token = user.APIToken })
+        @Html.ActionLink("Back to List", "Index", new { id = Model.Codigo, token = user.APIToken })
+    }
 </p>

@@ -49,13 +49,13 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.codigo)
+            @Html.DisplayNameFor(model => model.Codigo)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CodigoUsuario)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Lllamada)
+            @Html.DisplayNameFor(model => model.Llamada)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Token)
@@ -70,13 +70,13 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.codigo)
+                @Html.DisplayFor(modelItem => item.Codigo)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.CodigoUsuario)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Lllamada)
+                @Html.DisplayFor(modelItem => item.Llamada)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Token)
@@ -85,9 +85,12 @@
                 @Html.DisplayFor(modelItem => item.OTP)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @{
+                    //CAMBIAR A ESTE BLOQUE DE CODIGO
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Codigo, token = user.APIToken })
+                    @Html.ActionLink("Details", "Details", new { id = item.Codigo, token = user.APIToken })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Codigo, token = user.APIToken })
+                }
             </td>
         </tr>
     }

@@ -16,7 +16,7 @@ namespace APIBanking.Models
     {
         public int Codigo { get; set; }
         public int CodigoUsuario { get; set; }
-        public string Lllamada { get; set; }
+        public string Llamada { get; set; }
         public string Token { get; set; }
         public string OTP { get; set; }
     
