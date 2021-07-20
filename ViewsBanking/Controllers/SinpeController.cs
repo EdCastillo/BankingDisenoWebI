@@ -1,23 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using ViewsBanking.Managers;
+using ViewsBanking.Models;
 
 namespace ViewsBanking.Controllers
 {
     public class SinpeController : Controller
     {
         // GET: Sinpe
-        public ActionResult Index()
+        public async Task<ActionResult> Index(string token)
         {
-            return View();
+            SinpeManager manager = new SinpeManager();
+            IEnumerable<Sinpe> list = await manager.GetAll(token);
+            return View(list);
         }
 
         // GET: Sinpe/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id, string token)
         {
-            return View();
+            SinpeManager manager = new SinpeManager();
+            Sinpe sinpe = await manager.GetByID(id, token);
+            return View(sinpe);
         }
 
         // GET: Sinpe/Create
@@ -28,48 +35,39 @@ namespace ViewsBanking.Controllers
 
         // POST: Sinpe/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public async Task<ActionResult> Create(Sinpe sinpe, string token)
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            SinpeManager manager = new SinpeManager();
+            await manager.Insertar(sinpe, token);
+            return RedirectToAction("Index", new { token = token });
         }
 
         // GET: Sinpe/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id, string token)
         {
-            return View();
+            SinpeManager manager = new SinpeManager();
+            Sinpe sinpe = await manager.GetByID(id, token);
+            return View(sinpe);
         }
 
         // POST: Sinpe/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public async Task<ActionResult> Edit(Sinpe sinpe, string token)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            SinpeManager manager = new SinpeManager();
+            await manager.Actualizar(sinpe, token);
+            return RedirectToAction("Details", new { id = sinpe.Codigo, token = token });
         }
 
         // GET: Sinpe/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id, string token)
         {
-            return View();
+            SinpeManager manager = new SinpeManager();
+            await manager.Eliminar(id, token);
+            return RedirectToAction("Index", new { token = token });
         }
 
-        
+
+
     }
 }
