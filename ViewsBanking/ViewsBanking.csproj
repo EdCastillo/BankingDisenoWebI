@@ -215,6 +215,7 @@
     <Compile Include="Managers\EstadisticaManager.cs" />
     <Compile Include="Managers\MonedaManager.cs" />
     <Compile Include="Managers\PagoManager.cs" />
+    <Compile Include="Managers\PrestamoManager.cs" />
     <Compile Include="Managers\ServicioManager.cs" />
     <Compile Include="Managers\SesionManager.cs" />
     <Compile Include="Managers\TipoManager.cs" />

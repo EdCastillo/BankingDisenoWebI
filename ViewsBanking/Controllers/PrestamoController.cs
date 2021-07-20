@@ -9,7 +9,7 @@ using ViewsBanking.Models;
 
 namespace ViewsBanking.Controllers
 {
-    public class ErrorController : Controller
+    public class PrestamoController : Controller
     {
         // GET: Prestamo
         public async Task<ActionResult> Index(string token)
@@ -59,12 +59,12 @@ namespace ViewsBanking.Controllers
 
         // POST: Prestamo/Edit/5
         [HttpPost]
-        public async Task<ActionResult> Edit(Error error, string token)
+        public async Task<ActionResult> Edit(Prestamo error, string token)
         {
             try
             {
                 PrestamoManager manager = new PrestamoManager();
-                await manager.Actualizar(prestamo, token);
+                await manager.Actualizar(error, token);
                 return RedirectToAction("Index", new { token = token });
             }
             catch
