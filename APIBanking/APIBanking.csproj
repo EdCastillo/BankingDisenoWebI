@@ -189,11 +189,14 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MonedaController.cs" />
     <Compile Include="Controllers\PagoController.cs" />
+    <Compile Include="Controllers\PayPalController.cs" />
     <Compile Include="Controllers\PrestamoController.cs" />
     <Compile Include="Controllers\PruebaController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Controllers\SesionController.cs" />
     <Compile Include="Controllers\ServicioController.cs" />
+    <Compile Include="Controllers\SinpeController.cs" />
+    <Compile Include="Controllers\SobreController.cs" />
     <Compile Include="Controllers\TipoController.cs" />
     <Compile Include="Controllers\TokenGenerator.cs" />
     <Compile Include="Controllers\TokenValidationHandler.cs" />
@@ -205,6 +208,8 @@
     <Compile Include="Models\Abono.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Amount.cs" />
+    <Compile Include="Models\ApplicationContext.cs" />
     <Compile Include="Models\Categoria.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -217,6 +222,7 @@
     <Compile Include="Models\Estadistica.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\FullBody.cs" />
     <Compile Include="Models\LoginRequest.cs" />
     <Compile Include="Models\Model.Context.cs">
       <AutoGen>True</AutoGen>
@@ -251,6 +257,7 @@
     <Compile Include="Models\Punto.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PurchaseUnit.cs" />
     <Compile Include="Models\Seguridad.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -278,6 +285,7 @@
     <Compile Include="Models\Transferencia.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\URLType.cs" />
     <Compile Include="Models\Usuario.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
