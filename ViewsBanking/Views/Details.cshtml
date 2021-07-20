@@ -1,8 +1,8 @@
-﻿@model ViewsBanking.Models.Sinpe
+﻿@model ViewsBanking.Models.Sobre
 
 @{
     ViewBag.Title = "Details";
-    //AGREGAR COOKIES
+
     #region CookiesConfiguration_1.0
     //Cookies Configuration 1.0 (Configurado para Banking del 4.0 de TV)
     ViewsBanking.Models.UserCookie user = new ViewsBanking.Models.UserCookie();
@@ -40,13 +40,13 @@
         }
     }
     #endregion
-
+}
 }
 
 <h2>Details</h2>
 
 <div>
-    <h4>Sinpe</h4>
+    <h4>Sobre</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -58,19 +58,43 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TelefonoSinpe)
+            @Html.DisplayNameFor(model => model.CodigoCuenta)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TelefonoSinpe)
+            @Html.DisplayFor(model => model.CodigoCuenta)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FechaRegistro)
+            @Html.DisplayNameFor(model => model.Saldo)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FechaRegistro)
+            @Html.DisplayFor(model => model.Saldo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoMoneda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoMoneda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaCreacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaCreacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
         </dd>
 
         <dt>
@@ -81,17 +105,9 @@
             @Html.DisplayFor(model => model.Estado)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CodigoCuenta)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CodigoCuenta)
-        </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Codigo, token = user.APIToken }) |
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Codigo, token = user.APIToken })
     @Html.ActionLink("Back to List", "Index", new { id = Model.Codigo, token = user.APIToken })
 </p>

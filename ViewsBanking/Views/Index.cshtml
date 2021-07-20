@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ViewsBanking.Models.Sinpe>
+﻿@model IEnumerable<ViewsBanking.Models.Sobre>
 
 @{
     ViewBag.Title = "Index";
@@ -41,7 +41,6 @@
         }
     }
     #endregion
-
 }
 
 <h2>Index</h2>
@@ -55,16 +54,22 @@
             @Html.DisplayNameFor(model => model.Codigo)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TelefonoSinpe)
+            @Html.DisplayNameFor(model => model.CodigoCuenta)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FechaRegistro)
+            @Html.DisplayNameFor(model => model.Saldo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigoMoneda)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaCreacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Descripcion)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Estado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CodigoCuenta)
         </th>
         <th></th>
     </tr>
@@ -75,20 +80,26 @@
             @Html.DisplayFor(modelItem => item.Codigo)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TelefonoSinpe)
+            @Html.DisplayFor(modelItem => item.CodigoCuenta)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.FechaRegistro)
+            @Html.DisplayFor(modelItem => item.Saldo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodigoMoneda)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaCreacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descripcion)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Estado)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CodigoCuenta)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Codigo, token = user.APIToken }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Codigo, token = user.APIToken }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.Codigo, token = user.APIToken })
+            @Html.ActionLink("Details", "Details", new { id = item.Codigo, token = user.APIToken })
             @Html.ActionLink("Delete", "Delete", new { id = item.Codigo, token = user.APIToken })
         </td>
     </tr>

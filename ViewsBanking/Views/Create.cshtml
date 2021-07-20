@@ -1,8 +1,7 @@
-﻿@model ViewsBanking.Models.Sinpe
+﻿@model ViewsBanking.Models.Sobre
 
 @{
     ViewBag.Title = "Create";
-    //AGREGAR COOKIES
     #region CookiesConfiguration_1.0
     //Cookies Configuration 1.0 (Configurado para Banking del 4.0 de TV)
     ViewsBanking.Models.UserCookie user = new ViewsBanking.Models.UserCookie();
@@ -40,25 +39,25 @@
         }
     }
     #endregion
-
 }
 
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal">
-    <h4>Sinpe</h4>
+    <h4>Sobre</h4>
     <hr />
+
     @{ 
+        //AGREGAR ESTA LINEA
         <input type="hidden" name="token" value="@user.APIToken"> 
     }
 
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
     <div class="form-group">
         @Html.LabelFor(model => model.Codigo, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -68,18 +67,42 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.TelefonoSinpe, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.CodigoCuenta, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.TelefonoSinpe, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.TelefonoSinpe, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.CodigoCuenta, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CodigoCuenta, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.FechaRegistro, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Saldo, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.FechaRegistro, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.FechaRegistro, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Saldo, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Saldo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CodigoMoneda, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.CodigoMoneda, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.CodigoMoneda, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FechaCreacion, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.FechaCreacion, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.FechaCreacion, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -88,14 +111,6 @@
         <div class="col-md-10">
             @Html.EditorFor(model => model.Estado, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Estado, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.CodigoCuenta, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.CodigoCuenta, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.CodigoCuenta, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -111,3 +126,6 @@
     @Html.ActionLink("Back to List", "Index", new { token = user.APIToken })
 </div>
 
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
