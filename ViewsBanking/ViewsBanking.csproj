@@ -203,6 +203,7 @@
     <Compile Include="Controllers\PrestamoController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Controllers\SesionController.cs" />
+    <Compile Include="Controllers\SinpeController.cs" />
     <Compile Include="Controllers\TipoController.cs" />
     <Compile Include="Controllers\TransferenciaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -305,6 +306,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Views\Prestamo\" />
     <Folder Include="Views\Seguridad\" />
+    <Folder Include="Views\Sinpe\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
