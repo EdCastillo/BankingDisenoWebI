@@ -17,7 +17,7 @@ namespace APIBanking.Controllers
         [HttpGet]
         public IHttpActionResult GetId(int id)
         {
-            Sinpe sinpe = new Sinpe();
+            SINPE sinpe = new SINPE();
             try
             {
                 using (SqlConnection sqlConnection = new
@@ -56,7 +56,7 @@ namespace APIBanking.Controllers
         [HttpGet]
         public IHttpActionResult GetAll()
         {
-            List<Sinpe> sinpes = new List<Sinpe>();
+            List<SINPE> sinpes = new List<SINPE>();
             try
             {
                 using (SqlConnection sqlConnection = new
@@ -70,7 +70,7 @@ namespace APIBanking.Controllers
 
                     while (sqlDataReader.Read())
                     {
-                        Sinpe sinpe = new Sinpe();
+                        SINPE sinpe = new SINPE();
                         sinpe.Codigo = sqlDataReader.GetInt32(0);
                         sinpe.TelefonoSinpe = sqlDataReader.GetString(1);
                         sinpe.FechaRegistro = sqlDataReader.GetDateTime(2);
@@ -90,7 +90,7 @@ namespace APIBanking.Controllers
 
 
         [HttpPost]
-        public IHttpActionResult Ingresar(Sinpe sinpe)
+        public IHttpActionResult Ingresar(SINPE sinpe)
         {
             if (sinpe == null)
                 return BadRequest();
@@ -126,7 +126,7 @@ namespace APIBanking.Controllers
         }
 
         [HttpPut]
-        public IHttpActionResult Actualizar(Sinpe sinpe)
+        public IHttpActionResult Actualizar(SINPE sinpe)
         {
             if (sinpe == null)
                 return BadRequest();
@@ -141,7 +141,7 @@ namespace APIBanking.Controllers
                                                         SET 
                                                             TelefonoSinpe = @TelefonoSinpe,
                                                             FechaRegistro = @FechaRegistro,
-                                                            CodigoCuenta = @CodigoCuenta
+                                                            CodigoCuenta = @CodigoCuenta,
                                                             Estado = @Estado 
                                           WHERE Codigo = @Codigo",
                                          sqlConnection);

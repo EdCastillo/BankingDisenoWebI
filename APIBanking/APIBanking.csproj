@@ -194,6 +194,7 @@
     <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Controllers\SesionController.cs" />
     <Compile Include="Controllers\ServicioController.cs" />
+    <Compile Include="Controllers\SinpeController.cs" />
     <Compile Include="Controllers\TipoController.cs" />
     <Compile Include="Controllers\TokenGenerator.cs" />
     <Compile Include="Controllers\TokenValidationHandler.cs" />
