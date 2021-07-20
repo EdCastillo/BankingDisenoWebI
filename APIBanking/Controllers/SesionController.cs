@@ -10,7 +10,7 @@ using APIBanking.Models;
 
 namespace WebApiSegura.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     [RoutePrefix("api/Sesion")]
     public class SesionController : ApiController
     {

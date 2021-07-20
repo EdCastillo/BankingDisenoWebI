@@ -28,7 +28,7 @@ namespace APIBanking.Controllers
         private const string Order_URL = "v2/checkout/orders";
 
 
-        [AllowAnonymous]
+        [Authorize]
         [HttpPost]
         public async Task<IHttpActionResult> getPayPalRouteWithAmount(int amount)
         {

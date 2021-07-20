@@ -10,7 +10,7 @@ using APIBanking.Models;
 
 namespace APIBanking.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     [RoutePrefix("api/Moneda")]
     public class MonedaController : ApiController
     {

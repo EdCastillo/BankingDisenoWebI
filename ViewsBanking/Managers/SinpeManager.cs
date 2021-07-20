@@ -11,7 +11,7 @@ namespace ViewsBanking.Managers
 {
     public class SinpeManager:APIUtilities
     {
-        private const string ROUTE_Object_PREFIX = "simpe/";
+        private const string ROUTE_Object_PREFIX = "sinpe/";
 
 
 

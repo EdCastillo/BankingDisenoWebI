@@ -306,25 +306,25 @@
     <Content Include="Views\Tipo\Details.cshtml" />
     <Content Include="Views\Tipo\Create.cshtml" />
     <Content Include="Views\Tipo\Edit.cshtml" />
-	  <Content Include="Views\Sobre\Create.cshtml" />
-	  <Content Include="Views\Sobre\Details.cshtml" />
-	  <Content Include="Views\Sobre\Edit.cshtml" />
-	  <Content Include="Views\Sobre\Index.cshtml" />
-	  <Content Include="Views\Seguridad\Index.cshtml" />
-	  <Content Include="Views\Seguridad\Details.cshtml" />
-	  <Content Include="Views\Seguridad\Create.cshtml" />
-	  <Content Include="Views\Seguridad\Edit.cshtml" />
-	  <Content Include="Views\Prestamo\Index.cshtml" />
-	  <Content Include="Views\Prestamo\Details.cshtml" />
-	  <Content Include="Views\Prestamo\Create.cshtml" />
-	  <Content Include="Views\Prestamo\Edit.cshtml" />
+    <Content Include="Views\Sobre\Create.cshtml" />
+    <Content Include="Views\Sobre\Details.cshtml" />
+    <Content Include="Views\Sobre\Edit.cshtml" />
+    <Content Include="Views\Sobre\Index.cshtml" />
+    <Content Include="Views\Seguridad\Index.cshtml" />
+    <Content Include="Views\Seguridad\Details.cshtml" />
+    <Content Include="Views\Seguridad\Create.cshtml" />
+    <Content Include="Views\Seguridad\Edit.cshtml" />
+    <Content Include="Views\Prestamo\Index.cshtml" />
+    <Content Include="Views\Prestamo\Details.cshtml" />
+    <Content Include="Views\Prestamo\Create.cshtml" />
+    <Content Include="Views\Prestamo\Edit.cshtml" />
+    <Content Include="Views\Sinpe\Create.cshtml" />
+    <Content Include="Views\Sinpe\Details.cshtml" />
+    <Content Include="Views\Sinpe\Edit.cshtml" />
+    <Content Include="Views\Sinpe\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-
-	  <Folder Include="Views\Sinpe\" />
-	  <Folder Include="Views\Prestamo\" />
-    <Folder Include="Views\Seguridad\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

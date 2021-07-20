@@ -10,8 +10,8 @@ using APIBanking.Models;
 
 namespace APIBanking.Controllers
 {
-    [AllowAnonymous]
-    [RoutePrefix("api/Sinpe")]
+    [Authorize]
+    [RoutePrefix("api/sinpe")]
     public class SinpeController : ApiController
     {
         [HttpGet]

@@ -11,7 +11,7 @@ using APIBanking.Models;
 
 namespace APIBanking.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     [RoutePrefix("api/Servicio")]
     public class ServicioController : ApiController
     {
