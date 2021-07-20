@@ -204,6 +204,7 @@
     <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Controllers\SesionController.cs" />
     <Compile Include="Controllers\SinpeController.cs" />
+    <Compile Include="Controllers\SobreController.cs" />
     <Compile Include="Controllers\TipoController.cs" />
     <Compile Include="Controllers\TransferenciaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -220,6 +221,8 @@
     <Compile Include="Managers\SeguridadManager.cs" />
     <Compile Include="Managers\ServicioManager.cs" />
     <Compile Include="Managers\SesionManager.cs" />
+    <Compile Include="Managers\SinpeManager.cs" />
+    <Compile Include="Managers\SobreManager.cs" />
     <Compile Include="Managers\TipoManager.cs" />
     <Compile Include="Managers\TransferenciaManager.cs" />
     <Compile Include="Managers\UsuarioManager.cs" />
@@ -234,6 +237,8 @@
     <Compile Include="Models\Seguridad.cs" />
     <Compile Include="Models\Servicio.cs" />
     <Compile Include="Models\Sesion.cs" />
+    <Compile Include="Models\Sinpe.cs" />
+    <Compile Include="Models\Sobre.cs" />
     <Compile Include="Models\Tipo.cs" />
     <Compile Include="Models\Transferencia.cs" />
     <Compile Include="Models\UserCookie.cs" />
@@ -301,6 +306,10 @@
     <Content Include="Views\Tipo\Details.cshtml" />
     <Content Include="Views\Tipo\Create.cshtml" />
     <Content Include="Views\Tipo\Edit.cshtml" />
+    <Content Include="Views\Sobre\Create.cshtml" />
+    <Content Include="Views\Sobre\Details.cshtml" />
+    <Content Include="Views\Sobre\Edit.cshtml" />
+    <Content Include="Views\Sobre\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
