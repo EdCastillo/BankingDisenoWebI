@@ -11,7 +11,7 @@ using System.Web.Http;
 namespace APIBanking.Controllers
 {
 
-    [AllowAnonymous]
+    [Authorize]
     [RoutePrefix("api/categoria")]
     public class CategoriaController : ApiController
     {
