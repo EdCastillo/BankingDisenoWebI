@@ -26,7 +26,7 @@ namespace APIBanking.Models
         }
     
         public virtual DbSet<Cuenta> Cuenta { get; set; }
-        public virtual DbSet<Error> Error { get; set; }
+        public virtual DbSet<Punto> Error { get; set; }
         public virtual DbSet<Estadistica> Estadistica { get; set; }
         public virtual DbSet<Moneda> Moneda { get; set; }
         public virtual DbSet<Pago> Pago { get; set; }

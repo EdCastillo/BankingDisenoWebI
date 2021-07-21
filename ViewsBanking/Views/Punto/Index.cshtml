@@ -1,0 +1,98 @@
+﻿@model IEnumerable<ViewsBanking.Models.Punto>
+
+@{
+    ViewBag.Title = "Index";
+    #region CookiesConfiguration_1.0
+    //Cookies Configuration 1.0 (Configurado para Banking del 4.0 de TV)
+    ViewsBanking.Models.UserCookie user = new ViewsBanking.Models.UserCookie();
+    CreateOrValidate();
+    void CreateOrValidate()
+    {
+        HttpCookie comp = Request.Cookies["UserCookie"];
+        if (comp == null)
+        {
+            //Crear cookies si no existen
+            HttpCookie UserCookie = new HttpCookie("UserCookie");
+            UserCookie["ID"] = "0";
+            UserCookie["Nombre"] = "Invitado";
+            UserCookie["APIToken"] = "NotValid";
+            UserCookie.Expires.AddHours(5);
+            Response.Cookies.Add(UserCookie);
+
+            //cargar cookies existentes
+            HttpCookie reqCookies = Request.Cookies["UserCookie"];
+            user = new ViewsBanking.Models.UserCookie();
+            user.Nombre = reqCookies["Nombre"].ToString();
+            user.ID = Int32.Parse(reqCookies["ID"].ToString());
+            user.APIToken = reqCookies["APIToken"].ToString();
+
+        }
+        else
+        {
+            //cargar cookies existentes
+            HttpCookie reqCookies = Request.Cookies["UserCookie"];
+            user = new ViewsBanking.Models.UserCookie();
+            user.Nombre = reqCookies["Nombre"].ToString();
+            user.ID = Int32.Parse(reqCookies["ID"].ToString());
+            user.APIToken = reqCookies["APIToken"].ToString();
+
+        }
+    }
+    #endregion
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigoCuenta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CantidadPuntos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UltimoIngreso)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoCuenta)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CantidadPuntos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UltimoIngreso)
+            </td>
+            <td>
+                @{
+                    //CAMBIAR A ESTE BLOQUE DE CODIGO
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Codigo, token = user.APIToken })
+                    @Html.ActionLink("Details", "Details", new { id = item.Codigo, token = user.APIToken })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Codigo, token = user.APIToken })
+                }
+            </td>
+        </tr>
+    }
+
+</table>

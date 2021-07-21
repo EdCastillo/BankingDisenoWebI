@@ -208,6 +208,52 @@ namespace ViewsBanking
                 name: "prestamoEditar",
                 url: "prestamo/edit",
                 defaults: new { controller = "Prestamo", action = "Edit" });
+
+            //Punto
+            routes.MapRoute(
+                 name: "PuntoGetAll",
+                 url: "punto",
+                 defaults: new { controller = "Punto", action = "Index" });
+
+            routes.MapRoute(
+                name: "PuntoGetByID",
+                url: "punto/ByID",
+                defaults: new { controller = "Punto", action = "Details" });
+            routes.MapRoute(
+                name: "PuntoDelete",
+                url: "punto/delete",
+                defaults: new { controller = "Punto", action = "Delete" });
+            routes.MapRoute(
+                name: "PuntoCrear",
+                url: "punto/crear",
+                defaults: new { controller = "Punto", action = "Create" });
+            routes.MapRoute(
+                name: "PuntoEditar",
+                url: "punto/edit",
+                defaults: new { controller = "Punto", action = "Edit" });
+
+            //Proveedor
+            routes.MapRoute(
+                 name: "ProveedorGetAll",
+                 url: "proveedor",
+                 defaults: new { controller = "Proveedor", action = "Index" });
+
+            routes.MapRoute(
+                name: "ProveedorGetByID",
+                url: "proveedor/ByID",
+                defaults: new { controller = "Proveedor", action = "Details" });
+            routes.MapRoute(
+                name: "ProveedorDelete",
+                url: "proveedor/delete",
+                defaults: new { controller = "Proveedor", action = "Delete" });
+            routes.MapRoute(
+                name: "ProveedorCrear",
+                url: "proveedor/crear",
+                defaults: new { controller = "Proveedor", action = "Create" });
+            routes.MapRoute(
+                name: "ProveedorEditar",
+                url: "proveedor/edit",
+                defaults: new { controller = "Proveedor", action = "Edit" });
         }
     }
 }

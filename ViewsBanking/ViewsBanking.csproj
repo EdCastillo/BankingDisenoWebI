@@ -201,6 +201,8 @@
     <Compile Include="Controllers\MonedaController.cs" />
     <Compile Include="Controllers\PagoController.cs" />
     <Compile Include="Controllers\PrestamoController.cs" />
+    <Compile Include="Controllers\ProveedorController.cs" />
+    <Compile Include="Controllers\PuntoController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Controllers\SesionController.cs" />
     <Compile Include="Controllers\TipoController.cs" />
@@ -216,6 +218,8 @@
     <Compile Include="Managers\MonedaManager.cs" />
     <Compile Include="Managers\PagoManager.cs" />
     <Compile Include="Managers\PrestamoManager.cs" />
+    <Compile Include="Managers\ProveedorManager.cs" />
+    <Compile Include="Managers\PuntoManager.cs" />
     <Compile Include="Managers\SeguridadManager.cs" />
     <Compile Include="Managers\ServicioManager.cs" />
     <Compile Include="Managers\SesionManager.cs" />
@@ -230,6 +234,8 @@
     <Compile Include="Models\Moneda.cs" />
     <Compile Include="Models\Pago.cs" />
     <Compile Include="Models\Prestamo.cs" />
+    <Compile Include="Models\Proveedor.cs" />
+    <Compile Include="Models\Punto.cs" />
     <Compile Include="Models\Seguridad.cs" />
     <Compile Include="Models\Servicio.cs" />
     <Compile Include="Models\Sesion.cs" />
@@ -300,6 +306,14 @@
     <Content Include="Views\Tipo\Details.cshtml" />
     <Content Include="Views\Tipo\Create.cshtml" />
     <Content Include="Views\Tipo\Edit.cshtml" />
+    <Content Include="Views\Punto\Index.cshtml" />
+    <Content Include="Views\Punto\Details.cshtml" />
+    <Content Include="Views\Punto\Create.cshtml" />
+    <Content Include="Views\Punto\Edit.cshtml" />
+    <Content Include="Views\Proveedor\Index.cshtml" />
+    <Content Include="Views\Proveedor\Details.cshtml" />
+    <Content Include="Views\Proveedor\Create.cshtml" />
+    <Content Include="Views\Proveedor\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

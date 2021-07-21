@@ -190,7 +190,9 @@
     <Compile Include="Controllers\MonedaController.cs" />
     <Compile Include="Controllers\PagoController.cs" />
     <Compile Include="Controllers\PrestamoController.cs" />
+    <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="Controllers\PruebaController.cs" />
+    <Compile Include="Controllers\PuntoController.cs" />
     <Compile Include="Controllers\SeguridadController.cs" />
     <Compile Include="Controllers\SesionController.cs" />
     <Compile Include="Controllers\ServicioController.cs" />

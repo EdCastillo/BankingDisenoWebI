@@ -18,7 +18,7 @@ namespace APIBanking.Models
         public Usuario()
         {
             this.Cuenta = new HashSet<Cuenta>();
-            this.Error = new HashSet<Error>();
+            this.Error = new HashSet<Punto>();
             this.Estadistica = new HashSet<Estadistica>();
             this.Sesion = new HashSet<Sesion>();
             this.Prestamo = new HashSet<Prestamo>();
@@ -38,7 +38,7 @@ namespace APIBanking.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Cuenta> Cuenta { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Error> Error { get; set; }
+        public virtual ICollection<Punto> Error { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Estadistica> Estadistica { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
