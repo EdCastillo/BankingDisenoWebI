@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace APIBanking.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     [RoutePrefix("api/Prestamo")]
     public class PrestamoController : ApiController
     {

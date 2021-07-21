@@ -9,7 +9,7 @@ using ViewsBanking.Utilities;
 
 namespace ViewsBanking.Managers
 {
-    public class SeguridadManager:APIUtilities
+    public class SeguridadManager : APIUtilities
     {
         private const string ROUTE_Object_PREFIX = "seguridad/";
 
@@ -17,13 +17,13 @@ namespace ViewsBanking.Managers
 
         public async Task<Seguridad> Insertar(Seguridad objInput, string token)
         {
-            Seguridad error = JsonConvert.DeserializeObject<Seguridad>(await base.Insertar(objInput, ROUTE_Object_PREFIX, "", token));
-            return error;
+            Seguridad seguridad = JsonConvert.DeserializeObject<Seguridad>(await base.Insertar(objInput, ROUTE_Object_PREFIX, "", token));
+            return seguridad;
         }
         public async Task<Seguridad> GetByID(int id, string token)
         {
-            Seguridad error = JsonConvert.DeserializeObject<Seguridad>(await base.GetByID(id, ROUTE_Object_PREFIX, "", token));
-            return error;
+            Seguridad seguridad = JsonConvert.DeserializeObject<Seguridad>(await base.GetByID(id, ROUTE_Object_PREFIX, "", token));
+            return seguridad;
         }
         public async Task<IEnumerable<Seguridad>> GetAll(string token)
         {

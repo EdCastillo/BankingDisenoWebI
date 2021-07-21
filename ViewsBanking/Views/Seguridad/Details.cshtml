@@ -1,0 +1,98 @@
+﻿@model ViewsBanking.Models.Seguridad
+
+@{
+    ViewBag.Title = "Details";
+    #region CookiesConfiguration_1.0
+    //Cookies Configuration 1.0 (Configurado para Banking del 4.0 de TV)
+    ViewsBanking.Models.UserCookie user = new ViewsBanking.Models.UserCookie();
+    CreateOrValidate();
+    void CreateOrValidate()
+    {
+        HttpCookie comp = Request.Cookies["UserCookie"];
+        if (comp == null)
+        {
+            //Crear cookies si no existen
+            HttpCookie UserCookie = new HttpCookie("UserCookie");
+            UserCookie["ID"] = "0";
+            UserCookie["Nombre"] = "Invitado";
+            UserCookie["APIToken"] = "NotValid";
+            UserCookie.Expires.AddHours(5);
+            Response.Cookies.Add(UserCookie);
+
+            //cargar cookies existentes
+            HttpCookie reqCookies = Request.Cookies["UserCookie"];
+            user = new ViewsBanking.Models.UserCookie();
+            user.Nombre = reqCookies["Nombre"].ToString();
+            user.ID = Int32.Parse(reqCookies["ID"].ToString());
+            user.APIToken = reqCookies["APIToken"].ToString();
+
+        }
+        else
+        {
+            //cargar cookies existentes
+            HttpCookie reqCookies = Request.Cookies["UserCookie"];
+            user = new ViewsBanking.Models.UserCookie();
+            user.Nombre = reqCookies["Nombre"].ToString();
+            user.ID = Int32.Parse(reqCookies["ID"].ToString());
+            user.APIToken = reqCookies["APIToken"].ToString();
+
+        }
+    }
+    #endregion
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Seguridad</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoUsuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoUsuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Llamada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Llamada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Token)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Token)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OTP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OTP)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @{
+        //CAMBIAR BLOQUE DE CODIGO
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Codigo, token = user.APIToken })
+        @Html.ActionLink("Back to List", "Index", new { id = Model.Codigo, token = user.APIToken })
+    }
+</p>

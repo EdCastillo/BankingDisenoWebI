@@ -9,7 +9,7 @@ using ViewsBanking.Utilities;
 
 namespace ViewsBanking.Managers
 {
-    public class PrestamoManager:APIUtilities
+    public class PrestamoManager : APIUtilities
     {
         private const string ROUTE_Object_PREFIX = "prestamo/";
 
@@ -17,13 +17,13 @@ namespace ViewsBanking.Managers
 
         public async Task<Prestamo> Insertar(Prestamo objInput, string token)
         {
-            Prestamo error = JsonConvert.DeserializeObject<Prestamo>(await base.Insertar(objInput, ROUTE_Object_PREFIX, "", token));
-            return error;
+            Prestamo prestamo = JsonConvert.DeserializeObject<Prestamo>(await base.Insertar(objInput, ROUTE_Object_PREFIX, "", token));
+            return prestamo;
         }
         public async Task<Prestamo> GetByID(int id, string token)
         {
-            Prestamo error = JsonConvert.DeserializeObject<Prestamo>(await base.GetByID(id, ROUTE_Object_PREFIX, "", token));
-            return error;
+            Prestamo prestamo = JsonConvert.DeserializeObject<Prestamo>(await base.GetByID(id, ROUTE_Object_PREFIX, "", token));
+            return prestamo;
         }
         public async Task<IEnumerable<Prestamo>> GetAll(string token)
         {

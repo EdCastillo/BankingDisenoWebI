@@ -208,7 +208,6 @@ namespace ViewsBanking
                 name: "prestamoEditar",
                 url: "prestamo/edit",
                 defaults: new { controller = "Prestamo", action = "Edit" });
-
             //Punto
             routes.MapRoute(
                  name: "PuntoGetAll",
@@ -254,6 +253,51 @@ namespace ViewsBanking
                 name: "ProveedorEditar",
                 url: "proveedor/edit",
                 defaults: new { controller = "Proveedor", action = "Edit" });
+            //SINPE
+            routes.MapRoute(
+                 name: "SinpeGetAll",
+                 url: "sinpe",
+                 defaults: new { controller = "Sinpe", action = "Index" });
+
+            routes.MapRoute(
+                name: "SinpeGetByID",
+                url: "sinpe/ByID",
+                defaults: new { controller = "Sinpe", action = "Details" });
+            routes.MapRoute(
+                name: "SinpeDelete",
+                url: "sinpe/delete",
+                defaults: new { controller = "Sinpe", action = "Delete" });
+            routes.MapRoute(
+                name: "SinpeCrear",
+                url: "sinpe/crear",
+                defaults: new { controller = "Sinpe", action = "Create" });
+            routes.MapRoute(
+                name: "SinpeEditar",
+                url: "sinpe/edit",
+                defaults: new { controller = "Sinpe", action = "Edit" });
+
+            //Sobre
+            routes.MapRoute(
+                 name: "SobreGetAll",
+                 url: "sobre",
+                 defaults: new { controller = "Sobre", action = "Index" });
+
+            routes.MapRoute(
+                name: "SobreGetByID",
+                url: "sobre/ByID",
+                defaults: new { controller = "Sobre", action = "Details" });
+            routes.MapRoute(
+                name: "SobreDelete",
+                url: "sobre/delete",
+                defaults: new { controller = "Sobre", action = "Delete" });
+            routes.MapRoute(
+                name: "SobreCrear",
+                url: "sobre/crear",
+                defaults: new { controller = "Sobre", action = "Create" });
+            routes.MapRoute(
+                name: "SobreEditar",
+                url: "sobre/edit",
+                defaults: new { controller = "Sobre", action = "Edit" });
         }
     }
 }

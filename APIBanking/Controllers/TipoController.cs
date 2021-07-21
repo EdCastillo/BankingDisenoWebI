@@ -10,6 +10,8 @@ using System.Web.Http;
 
 namespace APIBanking.Controllers
 {
+    [RoutePrefix("api/tipo")]
+    [Authorize]
     public class TipoController : ApiController
     {
         [HttpGet]

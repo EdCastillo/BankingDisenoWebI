@@ -59,12 +59,12 @@ namespace ViewsBanking.Controllers
 
         // POST: Prestamo/Edit/5
         [HttpPost]
-        public async Task<ActionResult> Edit(Prestamo error, string token)
+        public async Task<ActionResult> Edit(Prestamo prestamo, string token)
         {
             try
             {
                 PrestamoManager manager = new PrestamoManager();
-                await manager.Actualizar(error, token);
+                await manager.Actualizar(prestamo, token);
                 return RedirectToAction("Index", new { token = token });
             }
             catch
