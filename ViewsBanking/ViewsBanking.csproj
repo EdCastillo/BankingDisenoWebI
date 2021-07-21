@@ -257,10 +257,16 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Compile Include="Controllers\CategoriaController.cs" />
+    <Compile Include="Controllers\TarjetaController.cs" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Compile Include="Managers\CategoriaManager.cs" />
+    <Compile Include="Managers\TarjetaManager.cs" />
+    <Compile Include="Models\Categoria.cs" />
+    <Compile Include="Models\Tarjeta.cs" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -274,6 +280,14 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <None Include="Views\Categoria\Create.cshtml" />
+    <None Include="Views\Categoria\Details.cshtml" />
+    <None Include="Views\Categoria\Edit.cshtml" />
+    <None Include="Views\Categoria\Index.cshtml" />
+    <None Include="Views\Tarjeta\Create.cshtml" />
+    <None Include="Views\Tarjeta\Details.cshtml" />
+    <None Include="Views\Tarjeta\Edit.cshtml" />
+    <None Include="Views\Tarjeta\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

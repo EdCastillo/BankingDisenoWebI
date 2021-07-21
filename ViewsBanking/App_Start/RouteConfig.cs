@@ -298,6 +298,51 @@ namespace ViewsBanking
                 name: "SobreEditar",
                 url: "sobre/edit",
                 defaults: new { controller = "Sobre", action = "Edit" });
+            //Categoria
+            routes.MapRoute(
+              name: "CategoriaGetAll",
+              url: "categoria",
+              defaults: new { controller = "Categoria", action = "Index" });
+
+            routes.MapRoute(
+                name: "CategoriaGetByID",
+                url: "categoria/ByID",
+                defaults: new { controller = "Categoria", action = "Details" });
+            routes.MapRoute(
+                name: "CategoriaDelete",
+                url: "categoria/delete",
+                defaults: new { controller = "Categoria", action = "Delete" });
+            routes.MapRoute(
+                name: "CategoriaCrear",
+                url: "categoria/crear",
+                defaults: new { controller = "Categoria", action = "Create" });
+            routes.MapRoute(
+                name: "CategoriaEditar",
+                url: "categoria/edit",
+                defaults: new { controller = "Categoria", action = "Edit" });
+
+            //Tarjetas|
+            routes.MapRoute(
+              name: "TarjetaGetAll",
+              url: "tarjeta",
+              defaults: new { controller = "Tarjeta", action = "Index" });
+
+            routes.MapRoute(
+                name: "TarjetaGetByID",
+                url: "tarjeta/ByID",
+                defaults: new { controller = "Tarjeta", action = "Details" });
+            routes.MapRoute(
+                name: "TarjetaDelete",
+                url: "tarjeta/delete",
+                defaults: new { controller = "Tarjeta", action = "Delete" });
+            routes.MapRoute(
+                name: "TarjetaCrear",
+                url: "tarjeta/crear",
+                defaults: new { controller = "Tarjeta", action = "Create" });
+            routes.MapRoute(
+                name: "TarjetaEditar",
+                url: "tarjeta/edit",
+                defaults: new { controller = "Tarjeta", action = "Edit" });
         }
     }
 }

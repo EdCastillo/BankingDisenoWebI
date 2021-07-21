@@ -1,0 +1,117 @@
+@model ViewsBanking.Models.Tarjeta
+
+@{
+    ViewBag.Title = "Details";
+    //AGREGAR COOKIES
+    #region CookiesConfiguration_1.0
+    //Cookies Configuration 1.0 (Configurado para Banking del 4.0 de TV)
+    ViewsBanking.Models.UserCookie user = new ViewsBanking.Models.UserCookie();
+    CreateOrValidate();
+    void CreateOrValidate()
+    {
+        HttpCookie comp = Request.Cookies["UserCookie"];
+        if (comp == null)
+        {
+            //Crear cookies si no existen
+            HttpCookie UserCookie = new HttpCookie("UserCookie");
+            UserCookie["ID"] = "0";
+            UserCookie["Nombre"] = "Invitado";
+            UserCookie["APIToken"] = "NotValid";
+            UserCookie.Expires.AddHours(5);
+            Response.Cookies.Add(UserCookie);
+
+            //cargar cookies existentes
+            HttpCookie reqCookies = Request.Cookies["UserCookie"];
+            user = new ViewsBanking.Models.UserCookie();
+            user.Nombre = reqCookies["Nombre"].ToString();
+            user.ID = Int32.Parse(reqCookies["ID"].ToString());
+            user.APIToken = reqCookies["APIToken"].ToString();
+
+        }
+        else
+        {
+            //cargar cookies existentes
+            HttpCookie reqCookies = Request.Cookies["UserCookie"];
+            user = new ViewsBanking.Models.UserCookie();
+            user.Nombre = reqCookies["Nombre"].ToString();
+            user.ID = Int32.Parse(reqCookies["ID"].ToString());
+            user.APIToken = reqCookies["APIToken"].ToString();
+
+        }
+    }
+    #endregion
+}
+
+
+<h2>Details</h2>
+
+<div>
+    <h4>Tarjeta</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumeroTarjeta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumeroTarjeta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CodigoCuenta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CodigoCuenta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaEmision)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaEmision)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaExpiracion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaExpiracion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CVC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CVC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @{
+        //CAMBIAR BLOQUE DE CODIGO
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Codigo, token = user.APIToken })
+        @Html.ActionLink("Back to List", "Index", new { id = Model.Codigo, token = user.APIToken })
+    }
+</p>
+
