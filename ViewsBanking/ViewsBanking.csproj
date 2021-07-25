@@ -281,14 +281,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <None Include="Views\Categoria\Create.cshtml" />
-    <None Include="Views\Categoria\Details.cshtml" />
-    <None Include="Views\Categoria\Edit.cshtml" />
-    <None Include="Views\Categoria\Index.cshtml" />
-    <None Include="Views\Tarjeta\Create.cshtml" />
-    <None Include="Views\Tarjeta\Details.cshtml" />
-    <None Include="Views\Tarjeta\Edit.cshtml" />
-    <None Include="Views\Tarjeta\Index.cshtml" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -351,6 +343,14 @@
     <Content Include="Views\Proveedor\Details.cshtml" />
     <Content Include="Views\Proveedor\Create.cshtml" />
     <Content Include="Views\Proveedor\Edit.cshtml" />
+    <Content Include="Views\Categoria\Create.cshtml" />
+    <Content Include="Views\Categoria\Details.cshtml" />
+    <Content Include="Views\Categoria\Edit.cshtml" />
+    <Content Include="Views\Categoria\Index.cshtml" />
+    <Content Include="Views\Tarjeta\Create.cshtml" />
+    <Content Include="Views\Tarjeta\Details.cshtml" />
+    <Content Include="Views\Tarjeta\Edit.cshtml" />
+    <Content Include="Views\Tarjeta\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
