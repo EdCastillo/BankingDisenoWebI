@@ -60,8 +60,12 @@
             <label for="exampleInputPassword1">Contraseña</label>
             <input type="password" class="form-control" id="password" placeholder="Contraseña">
         </div>
-        <button onclick="login()" class="btn btn-primary">Ingresar</button>
+        <div class="col">
+            <div class="row"><button onclick="login()" class="btn btn-primary">Ingresar</button></div>
+            <div class="row" style="padding-top:5px"><button onclick="Registrar()" class="btn btn-primary">Crear usuario</button></div>
+        </div>
     </div>
+    
 </body>
 
 <script>
@@ -74,6 +78,10 @@
         else {
             window.location.href = '/authenticate?username=' + username + '&password=' + password;
         }
+    }
+    function Registrar() {
+        window.location.href = '/Usuario/new';
+
     }
 
 </script>

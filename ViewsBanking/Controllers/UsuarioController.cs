@@ -27,7 +27,7 @@ namespace ViewsBanking.Controllers
         {
             UsuarioManager manager = new UsuarioManager();
             Usuario usuario = await manager.Insertar(new Usuario { Identificacion = identificacion, Email = email, Estado = "A", FechaNacimiento = DateTime.Parse(fechaNacimiento), Nombre = nombre, Password = password, Username = username });
-            return View(usuario);
+            return RedirectToAction("Login");
         }
 
         public async Task<ActionResult> Authenticate(string username,string password) {
