@@ -37,13 +37,13 @@ namespace ViewsBanking.Controllers
 
         // POST: Seguridad/Create
         [HttpPost]
-        public async Task<ActionResult> Create(Seguridad seguridad, string token)
+        public async Task<ActionResult> Create(Seguridad seguridad, string APItoken)
         {
             try
             {
                 SeguridadManager manager = new SeguridadManager();
-                await manager.Insertar(seguridad, token);
-                return RedirectToAction("Index", new { token = token });
+                await manager.Insertar(seguridad, APItoken);
+                return RedirectToAction("Index", new { token = APItoken });
             }
             catch
             {
@@ -63,13 +63,13 @@ namespace ViewsBanking.Controllers
 
         // POST: Seguridad/Edit/5
         [HttpPost]
-        public async Task<ActionResult> Edit(Seguridad seguridad, string token)
+        public async Task<ActionResult> Edit(Seguridad seguridad, string APItoken)
         {
             try
             {
                 SeguridadManager manager = new SeguridadManager();
-                await manager.Actualizar(seguridad, token);
-                return RedirectToAction("Index", new { token = token });
+                await manager.Actualizar(seguridad, APItoken);
+                return RedirectToAction("Index", new { token = APItoken });
             }
             catch
             {

@@ -52,7 +52,7 @@
     <h4>Seguridad</h4>
     <hr />
     @{
-        <input type="hidden" name="token" value="@user.APIToken">
+        <input type="hidden" name="APItoken" value="@user.APIToken">
     }
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
