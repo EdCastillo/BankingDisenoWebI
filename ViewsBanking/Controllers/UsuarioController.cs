@@ -32,12 +32,14 @@ namespace ViewsBanking.Controllers
 
         public async Task<ActionResult> Authenticate(string username,string password) {
             UsuarioManager manager = new UsuarioManager();
+            
             Usuario usuario = await manager.Login(new LoginRequest { Username = username,Password=password }) ;
             if (usuario==null)
             {
 
                 Redirect("");
             }
+            Session["Token"] = usuario.TOKEN;
             return View(usuario);
         }
         public ActionResult Test() {

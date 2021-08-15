@@ -1,7 +1,7 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿
 @{
+    ViewBag.Title = "Index";
+
     #region CookiesConfiguration_1.0
     //Cookies Configuration 1.0 (Configurado para Banking del 4.0 de TV)
     ViewsBanking.Models.UserCookie user = new ViewsBanking.Models.UserCookie();
@@ -41,17 +41,13 @@
     #endregion
 }
 
-<div class="display-4 text-center">
-    Bienvenido(a): @user.Nombre
-</div>
-<div class="jumbotron bg-dark text-white">
-    <h1>Proyecto, diseño web I-Banking</h1>
-    <p class="lead">Integrantes:</p><br />
-    <p class="lead">1. Eduardo Castillo Rodas</p>
-    <p class="lead">2. Stephanie Rojas Murillo</p>
-    <p class="lead">3. Pablo Bustos Cortes</p>
-    <p class="lead">4. Kevin Carmona</p>
-    <p class="lead">5.  Ricardo Salazar</p>
-    <p><a href="https://github.com/EdCastillo/BankingDisenoWebI/tree/Mantenimientos" class="btn btn-primary btn-lg">Ir a codigo fuente</a></p>
-</div>
+<h2>Index</h2>
+    <input id="amount" type="number" />
+    <button class="btn btn-primary" onclick="redirect()">Conseguir link</button>
+<script>
+    function redirect() {
+        var amount = document.getElementById('amount').value;
+        window.location.href = "/paypalRedirect?amount=" + amount + "&token=@user.APIToken";
+    }
 
+</script>

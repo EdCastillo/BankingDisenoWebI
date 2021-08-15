@@ -13,6 +13,19 @@ namespace ViewsBanking
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+
+            //Utilities
+            routes.MapRoute(
+                name: "PayPalLink",
+                url: "paypal",
+                defaults: new { controller = "Utilities", action = "Index" });
+            routes.MapRoute(
+                name: "PayPalRedirect",
+                url: "paypalRedirect",
+                defaults: new { controller = "Utilities", action = "GetLink" });
+
+
+
             //USUARIO
             routes.MapRoute(
                 name:"AuthenticateAction",
