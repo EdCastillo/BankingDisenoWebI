@@ -14,7 +14,6 @@ namespace ViewsBanking.Managers
         private const string ROUTE_Object_PREFIX = "abono/";
 
 
-
         public async Task<Abono> Insertar(Abono objInput, string token)
         {
             Abono error = JsonConvert.DeserializeObject<Abono>(await base.Insertar(objInput, ROUTE_Object_PREFIX, "", token));
