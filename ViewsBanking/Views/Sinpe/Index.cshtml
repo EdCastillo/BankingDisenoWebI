@@ -43,6 +43,26 @@
     #endregion
 
 }
+<head>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js%22%3E</script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js%22%3E</script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js%22%3E</script>
+
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js%22%3E</script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js%22%3E</script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js%22%3E</script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js%22%3E</script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js%22%3E</script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js%22%3E</script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js%22%3E</script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
 
 <h2>Index</h2>
 
@@ -95,3 +115,59 @@
 }
 
 </table>
+     
+     <canvas id="myChart" width="400" height="400"></canvas>
+<script>
+    let strings = [];
+    @foreach (var i in Model.Estado) {
+        <text>
+    strings.push("@i.Nombre");
+    </text>
+    }
+
+    let values = [];
+    @foreach (var i in Model.Estado) {
+        int count = 0;
+        foreach (var m in Model.Estado) {
+            if (i.Estado == m.Estado) {
+                count++;
+            }
+        }
+    <text>
+    values.push(@count);
+    </text>
+    }
+    let rgbasCONT = [];
+    let rgbasBORDER = [];
+    @foreach (var i in Model.Tipo) {
+        int r = random.Next(0, 255);
+        int g = random.Next(0, 255);
+        int b = random.Next(0, 255);
+        <text>
+    rgbasCONT.push("rgba(@r,@g,@b,0.2)");
+    rgbasBORDER.push("rgba(@r,@g,@b,1)");
+        </text>
+    }
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+        labels: strings,
+            datasets: [{
+                label: 'Cantidad de prestamos por tipo',
+                data: values,
+                backgroundColor: rgbasCONT,
+                borderColor: rgbasBORDER,
+                borderWidth: 1
+            }]
+        },
+        options: {
+        scales: {
+            y: {
+                beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
