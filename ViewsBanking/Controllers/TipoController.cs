@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -18,7 +19,13 @@ namespace ViewsBanking.Controllers
             string token=Session["Token"].ToString();
             TipoManager manager = new TipoManager();
             IEnumerable<Tipo> list=await manager.GetAll(token);
-            return View(list);
+            PrestamoManager managerPrest = new PrestamoManager();
+            IEnumerable<Prestamo> listPrestamo = await managerPrest.GetAll(token);
+
+            dynamic model = new ExpandoObject();
+            model.Tipo = list;
+            model.Prestamo = listPrestamo;
+            return View(model);
         }
 
         // GET: Tipo/Details/5

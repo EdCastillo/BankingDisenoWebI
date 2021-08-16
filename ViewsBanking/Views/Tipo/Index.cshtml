@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ViewsBanking.Models.Tipo>
+﻿@model dynamic
     @using System.Text
 @{
     ViewBag.Title = "Index";
@@ -39,49 +39,59 @@
         }
     }
     #endregion
-
-    StringBuilder stringBuilder = new StringBuilder();
-    stringBuilder.Append('[');
+    Random random = new Random();
 }
 <head>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 <h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<div id="tab">
-    <table class="table">
+<div>
+    <table class="table"  id="tab">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Codigo)
+                Codigo
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nombre)
+                Nombre
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Descripcion)
+                Descripcion
             </th>
             <th></th>
         </tr>
 
-        @foreach (var item in Model)
+        @foreach (var item in Model.Tipo)
         {
-            stringBuilder.Append(item.Nombre);
-            stringBuilder.Append(',');
-            <tr>
+            <tr class="bg-dark">
                 <td>
-                    @Html.DisplayFor(modelItem => item.Codigo)
+                    @item.Codigo
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Nombre)
+                    @item.Nombre
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Descripcion)
+                    @item.Descripcion
                 </td>
                 <td>
                     @{
@@ -96,43 +106,79 @@
 
     </table>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('[id*=tab]').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
+            dom: 'Bfrtip',
+            'aoColumnDefs': [{ 'bSortable': false, 'aTargets': [0] }],
+            'iDisplayLength': 5,
+            buttons: [
+                { extend: 'copy', text: 'Copy to clipboard', className: 'exportExcel btn btn-primary', exportOptions: { modifier: { page: 'all' } } },
+                { extend: 'excel', text: 'Export to Excel', className: 'exportExcel  btn btn-primary', filename: 'Errores_Excel', exportOptions: { modifier: { page: 'all' } } },
+                { extend: 'csv', text: 'Export to CSV', className: 'exportExcel  btn btn-primary', filename: 'Errores_Csv', exportOptions: { modifier: { page: 'all' } } },
+                { extend: 'pdf', text: 'Export to PDF', className: 'exportExcel  btn btn-primary', filename: 'Errores_Pdf', orientation: 'landscape', pageSize: 'LEGAL', exportOptions: { modifier: { page: 'all' }, columns: ':visible' } }
+            ]
+        });
+    });
+</script>
 
-
-<canvas id="myChart" width="400" height="400"></canvas>
+<canvas id="myChart" width="250" height="250"></canvas>
 <script>
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
+    let strings = [];
+    @foreach (var i in Model.Tipo) {
+        <text>
+    strings.push("@i.Nombre");
+    </text>
+    }
+
+    let values = [];
+    @foreach (var i in Model.Tipo) {
+        int count = 0;
+        foreach (var m in Model.Prestamo) {
+            if (i.Codigo == m.CodigoTipo) {
+                count++;
+            }
+        }
+    <text>
+    values.push(@count);
+    </text>
+    }
+    let rgbasCONT = [];
+    let rgbasBORDER = [];
+    @foreach (var i in Model.Tipo) {
+        int r = random.Next(0, 255);
+        int g = random.Next(0, 255);
+        int b = random.Next(0, 255);
+        <text>
+    rgbasCONT.push("rgba(@r,@g,@b,0.2)");
+    rgbasBORDER.push("rgba(@r,@g,@b,1)");
+        </text>
+    }
+
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: [""],
+        labels: strings,
             datasets: [{
-                label: '# of Votes',
-                data: [12, 19, 3, 5, 2, 3],
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
-                ],
+                label: 'Cantidad de prestamos por tipo',
+                data: values,
+                backgroundColor: rgbasCONT,
+                borderColor: rgbasBORDER,
                 borderWidth: 1
             }]
         },
         options: {
-            scales: {
-                y: {
-                    beginAtZero: true
+        scales: {
+            y: {
+                beginAtZero: true
                 }
             }
         }
     });
 </script>
+<style>
+    .dataTables_empty {
+        background-color: rgb(56,60,68)
+    }
+</style>
