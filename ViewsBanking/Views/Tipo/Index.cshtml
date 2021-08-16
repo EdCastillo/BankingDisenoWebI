@@ -49,8 +49,8 @@
 
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" />
+    @*<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" />*@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
@@ -113,10 +113,10 @@
             'aoColumnDefs': [{ 'bSortable': false, 'aTargets': [0] }],
             'iDisplayLength': 5,
             buttons: [
-                { extend: 'copy', text: 'Copy to clipboard', className: 'exportExcel btn btn-primary', exportOptions: { modifier: { page: 'all' } } },
-                { extend: 'excel', text: 'Export to Excel', className: 'exportExcel  btn btn-primary', filename: 'Errores_Excel', exportOptions: { modifier: { page: 'all' } } },
-                { extend: 'csv', text: 'Export to CSV', className: 'exportExcel  btn btn-primary', filename: 'Errores_Csv', exportOptions: { modifier: { page: 'all' } } },
-                { extend: 'pdf', text: 'Export to PDF', className: 'exportExcel  btn btn-primary', filename: 'Errores_Pdf', orientation: 'landscape', pageSize: 'LEGAL', exportOptions: { modifier: { page: 'all' }, columns: ':visible' } }
+                { extend: 'copy', text: 'Copy to clipboard', className: 'exportExcel btn btn-info', exportOptions: { modifier: { page: 'all' } } },
+                { extend: 'excel', text: 'Export to Excel', className: 'exportExcel  btn btn-info', filename: 'Errores_Excel', exportOptions: { modifier: { page: 'all' } } },
+                { extend: 'csv', text: 'Export to CSV', className: 'exportExcel  btn btn-info', filename: 'Errores_Csv', exportOptions: { modifier: { page: 'all' } } },
+                { extend: 'pdf', text: 'Export to PDF', className: 'exportExcel  btn btn-info', filename: 'Errores_Pdf', orientation: 'landscape', pageSize: 'LEGAL', exportOptions: { modifier: { page: 'all' }, columns: ':visible' } }
             ]
         });
     });
@@ -178,7 +178,8 @@
     });
 </script>
 <style>
-    .dataTables_empty {
-        background-color: rgb(56,60,68)
+
+    .btn {
+        margin-left:10px
     }
 </style>
