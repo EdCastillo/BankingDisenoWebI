@@ -157,9 +157,9 @@
      <script>
     let strings = [];
     let values = [];
-    @foreach (var i in Model.GroupBy(info=>info.Token).Select(group=>new {Token=group.Key,Cantidad=group.Count() })) {
+    @foreach (var i in Model.GroupBy(info=>info.NumeroCuotas).Select(group=>new {NumeroCuotas=group.Key,Cantidad=group.Count() })) {
     <text>
-    strings.push("@i.Token");
+    strings.push("@i.NumeroCuotas");
     values.push(@i.Cantidad);
     </text>
     }
@@ -180,7 +180,7 @@
         data: {
         labels: strings,
             datasets: [{
-                label: 'Cantidad de prestamos por tipo',
+                label: 'Cantidad de numero de cuotas por tipo',
                 data: values,
                 backgroundColor: rgbasCONT,
                 borderColor: rgbasBORDER,
