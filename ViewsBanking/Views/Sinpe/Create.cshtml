@@ -53,9 +53,7 @@
 <div class="form-horizontal">
     <h4>Sinpe</h4>
     <hr />
-    @{ 
-        <input type="hidden" name="token" value="@user.APIToken"> 
-    }
+
 
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -108,6 +106,6 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index", new { token = user.APIToken })
+    @Html.ActionLink("Back to List", "Index")
 </div>
 
