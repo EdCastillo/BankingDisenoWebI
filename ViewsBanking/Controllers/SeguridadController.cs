@@ -12,17 +12,19 @@ namespace ViewsBanking.Controllers
     public class SeguridadController : Controller
     {
         // GET: Seguridad
-        public async Task<ActionResult> Index(string token)
+        public async Task<ActionResult> Index()
         {
-
+        
+            string token = Session["Token"].ToString()
             SeguridadManager manager = new SeguridadManager();
             IEnumerable<Seguridad> list = await manager.GetAll(token);
             return View(list);
         }
 
         // GET: Seguridad/Details/5
-        public async Task<ActionResult> Details(int id, string token)
+        public async Task<ActionResult> Details(int id)
         {
+              string token = Session["Token"].ToString()
             SeguridadManager manager = new SeguridadManager();
             Seguridad seguridad = await manager.GetByID(id, token);
             return View(seguridad);
@@ -37,10 +39,11 @@ namespace ViewsBanking.Controllers
 
         // POST: Seguridad/Create
         [HttpPost]
-        public async Task<ActionResult> Create(Seguridad seguridad, string APItoken)
+        public async Task<ActionResult> Create(Seguridad seguridad)
         {
             try
             {
+                   string token = Session["Token"].ToString()
                 SeguridadManager manager = new SeguridadManager();
                 await manager.Insertar(seguridad, APItoken);
                 return RedirectToAction("Index", new { token = APItoken });
@@ -52,8 +55,9 @@ namespace ViewsBanking.Controllers
         }
 
         // GET: Seguridad/Edit/5
-        public async Task<ActionResult> Edit(int id, string token)
+        public async Task<ActionResult> Edit(int id)
         {
+               string token = Session["Token"].ToString()
             SeguridadManager manager = new SeguridadManager();
             Seguridad seguridad = await manager.GetByID(id, token);
             return View(seguridad);
@@ -63,10 +67,11 @@ namespace ViewsBanking.Controllers
 
         // POST: Seguridad/Edit/5
         [HttpPost]
-        public async Task<ActionResult> Edit(Seguridad seguridad, string APItoken)
+        public async Task<ActionResult> Edit(Seguridad seguridad)
         {
             try
             {
+                    string token = Session["Token"].ToString()
                 SeguridadManager manager = new SeguridadManager();
                 await manager.Actualizar(seguridad, APItoken);
                 return RedirectToAction("Index", new { token = APItoken });
@@ -80,9 +85,9 @@ namespace ViewsBanking.Controllers
 
 
         // POST: Seguridad/Delete/5
-        public async Task<ActionResult> Delete(int id, string token)
+        public async Task<ActionResult> Delete(int id)
         {
-            // TODO: Add delete logic here
+               string token = Session["Token"].ToString()
             SeguridadManager manager = new SeguridadManager();
             await manager.Eliminar(id, token);
             return RedirectToAction("Index", new { token = token });
