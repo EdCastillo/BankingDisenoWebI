@@ -98,9 +98,9 @@
             <td>
                 @{
                     //CAMBIAR A ESTE BLOQUE DE CODIGO
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Codigo, token = user.APIToken })
-                    @Html.ActionLink("Details", "Details", new { id = item.Codigo, token = user.APIToken })
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Codigo, token = user.APIToken })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Codigo})
+                    @Html.ActionLink("Details", "Details", new { id = item.Codigo})
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Codigo})
                 }
             </td>
         </tr>
