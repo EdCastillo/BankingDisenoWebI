@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -21,7 +22,6 @@ namespace ViewsBanking.Controllers
             IEnumerable<Categoria> list = await manager.GetAll(token);
             ServicioManager managerServicio = new ServicioManager();
             IEnumerable<Servicio> listServicio= await managerServicio.GetAll(token);
-            
             dynamic model = new ExpandoObject();
             model.Categoria = list;
             model.Servicio = listServicio;

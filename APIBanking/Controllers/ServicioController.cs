@@ -11,7 +11,7 @@ using APIBanking.Models;
 
 namespace APIBanking.Controllers
 {
-    [Authorize]
+    [AllowAnonymous]
     [RoutePrefix("api/Servicio")]
     public class ServicioController : ApiController
     {
@@ -61,7 +61,7 @@ namespace APIBanking.Controllers
                 using (SqlConnection sqlConnection = new
                     SqlConnection(ConfigurationManager.ConnectionStrings["Banking"].ConnectionString))
                 {
-                    SqlCommand sqlCommand = new SqlCommand(@"SELECT Codigo, Descripcion, Estado
+                    SqlCommand sqlCommand = new SqlCommand(@"SELECT Codigo, Descripcion, Estado,CodigoProveedor,CodigoCategoria
                                                             FROM   Servicio", sqlConnection);
                     sqlConnection.Open();
 
@@ -73,7 +73,8 @@ namespace APIBanking.Controllers
                         servicio.Codigo = sqlDataReader.GetInt32(0);
                         servicio.Descripcion = sqlDataReader.GetString(1);
                         servicio.Estado = sqlDataReader.GetString(2);
-
+                        servicio.CodigoProveedor = sqlDataReader.GetInt32(3);
+                        servicio.CodigoCategoria = sqlDataReader.GetInt32(4);
                         servicios.Add(servicio);
                     }
                     sqlConnection.Close();

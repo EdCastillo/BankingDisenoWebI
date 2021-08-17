@@ -1,4 +1,4 @@
-@model IEnumerable<ViewsBanking.Models.Categoria>
+@model dynamic
 
 @{
     ViewBag.Title = "Index";
@@ -72,28 +72,28 @@
 <table class="table" id="tab">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Codigo)
+            Codigo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NombreCategoria)
+            NombreCategoria
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
+            Descripcion
         </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.Categoria)
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Codigo)
+                @item.Codigo
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NombreCategoria)
+                @item.NombreCategoria
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
+                @item.Descripcion
             </td>
             <td>
                 @{
@@ -128,7 +128,7 @@
     let strings = [];
     @foreach (var i in Model.Categoria) {
         <text>
-            strings.push("@i.Nombre");
+            strings.push("@i.NombreCategoria");
         </text>
     }
     let values = [];
