@@ -12,8 +12,10 @@ namespace ViewsBanking.Utilities
 {
     
     public class APIUtilities{
+        //to localhost :http://localhost:50266/api/
+        //to remote host: http://eduardoleocr-002-site3.ctempurl.com/api/
 
-        public const string API_ROUTE= "http://eduardoleocr-002-site3.ctempurl.com/api/";
+        public const string API_ROUTE= "http://localhost:50266/api/";
 
         public HttpClient GetAuthorizedClient(string token) {
             HttpClient client = new HttpClient();
@@ -58,5 +60,14 @@ namespace ViewsBanking.Utilities
             var result = await client.GetStringAsync(API_ROUTE + routeObjectPrefix + HttpActionRoute);
             return result;
         }
+
+
+
+        //
+        protected async Task<object> Prueba(object obj, string token) {
+            HttpClient client = GetAuthorizedClient(token);
+            var result = await client.PostAsync(API_ROUTE, new StringContent(JsonConvert.SerializeObject(obj), Encoding.UTF8, "application/json"));
+            return new { result };
+        } 
     }
 }
