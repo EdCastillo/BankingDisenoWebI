@@ -44,9 +44,12 @@ namespace ViewsBanking
             //SESION
             routes.MapRoute(name: "Sesion",
                url: "sesion/",
-               defaults: new { controller = "Sesion", action = "GetAll" });
+               defaults: new { controller = "Sesion", action = "Index" });
 
-
+            //Estadistica
+            routes.MapRoute(name: "Estadistica",
+   url: "estadistica/",
+   defaults: new { controller = "Estadistica", action = "Index" });
 
             //HOME
             routes.MapRoute(

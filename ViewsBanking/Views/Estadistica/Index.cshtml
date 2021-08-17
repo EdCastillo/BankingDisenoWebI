@@ -1,9 +1,9 @@
-﻿@model IEnumerable<ViewsBanking.Models.Sesion>
+﻿@model IEnumerable<ViewsBanking.Models.Estadistica>
 
 @{
-    ViewBag.Title = "GetAll";
-    Random random=new Random();
-    int date = 2000;
+    ViewBag.Title = "Index";
+
+    Random random = new Random();
 }
 <head>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
@@ -21,9 +21,12 @@
     <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
     <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
-<h2>GetAll</h2>
+<h2>Index</h2>
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -36,38 +39,58 @@
             @Html.DisplayNameFor(model => model.CodigoUsuario)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FechaInicio)
+            @Html.DisplayNameFor(model => model.FechaHora)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FechaExpiracion)
+            @Html.DisplayNameFor(model => model.Navegador)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Estado)
+            @Html.DisplayNameFor(model => model.PlataformaDispositivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FabricanteDispositivo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Vista)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Accion)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Codigo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CodigoUsuario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaInicio)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FechaExpiracion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Estado)
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaHora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Navegador)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PlataformaDispositivo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FabricanteDispositivo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Vista)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Accion)
+            </td>
+        </tr>
+    }
 
 </table>
+
 <script type="text/javascript">
     $(document).ready(function () {
         $('[id*=tab]').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
@@ -83,57 +106,36 @@
         });
     });
 </script>
-<canvas id="myChart" width="250" height="250"></canvas>
 
+
+
+<canvas id="myChart" width="250" height="250"></canvas>
 <script>
     let strings = [];
     let values = [];
     let rgbasCONT = [];
     let rgbasBORDER = [];
-    @while (date < DateTime.Now.Year + 1) {
-        int count = 0;
-        foreach (var i in Model) {
-            if (date == i.FechaInicio.Year) {
-                if (count == 0)
-                {
-                <text>
-                    strings.push("@date");
-
-                </text>
-int r = random.Next(0, 255);
+    @foreach (var i in Model.GroupBy(info=>info.PlataformaDispositivo).Select(group=>new {Estado=group.Key,Cantidad=group.Count() })) {
+        int r = random.Next(0, 255);
         int g = random.Next(0, 255);
         int b = random.Next(0, 255);
-        <text>
+    <text>
+        strings.push("@i.Estado");
+        values.push(@i.Cantidad);
+
     rgbasCONT.push("rgba(@r,@g,@b,0.2)");
-    rgbasBORDER.push("rgba(@r,@g,@b,1)");
+
+    rgbasCONT.push("rgba(@r,@g,@b,1)");
         </text>
-                    count++;
-                }
-                else {
-                    count++;
-                }
-            }
-        }
-        if (count != 0) {
-            <text>
-                values.push(@count);
-            </text>
-        }
-
-        date++;
     }
-
-
-
-
 
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
-        type: 'line',
+        type: 'bar',
         data: {
         labels: strings,
             datasets: [{
-            label: 'Cantidad de prestamos por tipo',
+                label: 'Cantidad de prestamos por tipo',
                 data: values,
                 backgroundColor: rgbasCONT,
                 borderColor: rgbasBORDER,
@@ -149,3 +151,10 @@ int r = random.Next(0, 255);
         }
     });
 </script>
+
+
+<style>
+    .btn {
+        margin-left: 10px
+    }
+</style>
