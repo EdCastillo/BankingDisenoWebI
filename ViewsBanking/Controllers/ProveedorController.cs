@@ -18,7 +18,7 @@ namespace ViewsBanking.Controllers
          string token = Session["Token"].ToString();
             ProveedorManager manager = new ProveedorManager();
             IEnumerable<Proveedor> list = await manager.GetAll(token);
-            ServicioManager managerPrest = new ServicioManager();
+            ServicioManager managerServ = new ServicioManager();
             IEnumerable<Servicio> listServicio = await managerServ.GetAll(token);
             
                   dynamic model = new ExpandoObject();
