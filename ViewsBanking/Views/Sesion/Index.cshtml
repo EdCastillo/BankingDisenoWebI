@@ -1,0 +1,122 @@
+﻿@model IEnumerable<ViewsBanking.Models.Sesion>
+
+@{
+    ViewBag.Title = "GetAll";
+}
+<head>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.22/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    @*<link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" />*@
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<h2>GetAll</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" id="tab">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigoUsuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaInicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaExpiracion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Estado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CodigoUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaInicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaExpiracion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Estado)
+        </td>
+    </tr>
+}
+
+</table>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('[id*=tab]').prepend($("<thead></thead>").append($(this).find("tr:first"))).DataTable({
+            dom: 'Bfrtip',
+            'aoColumnDefs': [{ 'bSortable': false, 'aTargets': [0] }],
+            'iDisplayLength': 5,
+            buttons: [
+                { extend: 'copy', text: 'Copy to clipboard', className: 'exportExcel btn btn-info', exportOptions: { modifier: { page: 'all' } } },
+                { extend: 'excel', text: 'Export to Excel', className: 'exportExcel  btn btn-info', filename: 'Errores_Excel', exportOptions: { modifier: { page: 'all' } } },
+                { extend: 'csv', text: 'Export to CSV', className: 'exportExcel  btn btn-info', filename: 'Errores_Csv', exportOptions: { modifier: { page: 'all' } } },
+                { extend: 'pdf', text: 'Export to PDF', className: 'exportExcel  btn btn-info', filename: 'Errores_Pdf', orientation: 'landscape', pageSize: 'LEGAL', exportOptions: { modifier: { page: 'all' }, columns: ':visible' } }
+            ]
+        });
+    });
+</script>
+<canvas id="myChart" width="250" height="250"></canvas>
+
+<script>
+    let strings = [];
+    @foreach (var i in Model) {
+        if (DateTime.Now == i.FechaInicio.Year) {
+        <text>
+        strings.push("@i.FechaInicio");
+        </text>
+        }
+
+    }
+
+
+
+
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: strings,
+            datasets: [{
+                label: 'Cantidad de prestamos por tipo',
+                data: values,
+                backgroundColor: rgbasCONT,
+                borderColor: rgbasBORDER,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>

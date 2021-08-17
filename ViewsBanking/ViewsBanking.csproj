@@ -307,7 +307,7 @@
     <Content Include="Views\Usuario\Login.cshtml" />
     <Content Include="Views\Moneda\GetAll.cshtml" />
     <Content Include="Views\Pago\GetAll.cshtml" />
-    <Content Include="Views\Sesion\GetAll.cshtml" />
+    <Content Include="Views\Sesion\Index.cshtml" />
     <Content Include="Views\Moneda\GetById.cshtml" />
     <Content Include="Views\Transferencia\GetAll.cshtml" />
     <Content Include="Views\Transferencia\GetByID.cshtml" />

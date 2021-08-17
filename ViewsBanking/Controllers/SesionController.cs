@@ -11,8 +11,9 @@ namespace ViewsBanking.Controllers
 {
     public class SesionController : Controller
     {
-        public async Task<ActionResult> GetAll(string token)
+        public async Task<ActionResult> Index()
         {
+            string token = Session["Token"].ToString();
             SesionManager manager = new SesionManager();
             IEnumerable<Sesion> list=await manager.GetAll(token);
             return View(list);
