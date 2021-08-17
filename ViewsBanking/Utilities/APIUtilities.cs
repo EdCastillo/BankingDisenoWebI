@@ -15,7 +15,7 @@ namespace ViewsBanking.Utilities
         //to localhost :http://localhost:50266/api/
         //to remote host: http://eduardoleocr-002-site3.ctempurl.com/api/
 
-        public const string API_ROUTE= "http://localhost:50266/api/";
+        public const string API_ROUTE= "http://eduardoleocr-002-site3.ctempurl.com/api/";
 
         public HttpClient GetAuthorizedClient(string token) {
             HttpClient client = new HttpClient();
