@@ -14,8 +14,8 @@ namespace ViewsBanking.Controllers
         // GET: Seguridad
         public async Task<ActionResult> Index()
         {
-        
-            string token = Session["Token"].ToString()
+
+            string token = Session["Token"].ToString();
             SeguridadManager manager = new SeguridadManager();
             IEnumerable<Seguridad> list = await manager.GetAll(token);
             return View(list);
@@ -24,7 +24,7 @@ namespace ViewsBanking.Controllers
         // GET: Seguridad/Details/5
         public async Task<ActionResult> Details(int id)
         {
-              string token = Session["Token"].ToString()
+            string token = Session["Token"].ToString();
             SeguridadManager manager = new SeguridadManager();
             Seguridad seguridad = await manager.GetByID(id, token);
             return View(seguridad);
@@ -43,10 +43,10 @@ namespace ViewsBanking.Controllers
         {
             try
             {
-                   string token = Session["Token"].ToString()
+                string token = Session["Token"].ToString();
                 SeguridadManager manager = new SeguridadManager();
-                await manager.Insertar(seguridad, APItoken);
-                return RedirectToAction("Index", new { token = APItoken });
+                await manager.Insertar(seguridad, token);
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -57,7 +57,7 @@ namespace ViewsBanking.Controllers
         // GET: Seguridad/Edit/5
         public async Task<ActionResult> Edit(int id)
         {
-               string token = Session["Token"].ToString()
+            string token = Session["Token"].ToString();
             SeguridadManager manager = new SeguridadManager();
             Seguridad seguridad = await manager.GetByID(id, token);
             return View(seguridad);
@@ -71,10 +71,10 @@ namespace ViewsBanking.Controllers
         {
             try
             {
-                    string token = Session["Token"].ToString()
+                string token = Session["Token"].ToString();
                 SeguridadManager manager = new SeguridadManager();
-                await manager.Actualizar(seguridad, APItoken);
-                return RedirectToAction("Index", new { token = APItoken });
+                await manager.Actualizar(seguridad, token);
+                return RedirectToAction("Index");
             }
             catch
             {
@@ -87,10 +87,10 @@ namespace ViewsBanking.Controllers
         // POST: Seguridad/Delete/5
         public async Task<ActionResult> Delete(int id)
         {
-               string token = Session["Token"].ToString()
+            string token = Session["Token"].ToString();
             SeguridadManager manager = new SeguridadManager();
             await manager.Eliminar(id, token);
-            return RedirectToAction("Index", new { token = token });
+            return RedirectToAction("Index");
         }
     }
 }

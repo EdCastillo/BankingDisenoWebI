@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ViewsBanking.Models.Proveedor>
+﻿@model dynamic
 @{
     ViewBag.Title = "Index";
     #region CookiesConfiguration_1.0
@@ -69,40 +69,40 @@ Random random = new Random();
 <table class="table" id="tab">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Codigo)
+            Codigo
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NombreProveedor)
+            NombreProveedor
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TelefonoProveedor)
+            TelefonoProveedor
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CorreoProveedor)
+            CorreoProveedor
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
+            Descripcion
         </th>
         <th></th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.Proveedor)
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Codigo)
+                @item.Codigo
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NombreProveedor)
+                @item.NombreProveedor
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TelefonoProveedor)
+                @item.TelefonoProveedor
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CorreoProveedor)
+                @item.CorreoProveedor
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Descripcion)
+                @item.Descripcion
             </td>
             <td>
                 @{
@@ -137,7 +137,7 @@ Random random = new Random();
     let strings = [];
     @foreach (var i in Model.Proveedor) {
         <text>
-            strings.push("@i.Nombre");
+            strings.push("@i.NombreProveedor");
         </text>
     }
     let values = [];

@@ -61,8 +61,8 @@ namespace APIBanking.Controllers
                 while (reader.Read())
                 {
                     Tipo tipo = new Tipo();
-                    tipo.Descripcion = reader.GetString(1);
-                    tipo.Nombre = reader.GetString(2);
+                    tipo.Descripcion = reader.GetString(2);
+                    tipo.Nombre = reader.GetString(1);
                     tipo.Codigo = reader.GetInt32(0);
                     list.Add(tipo);
                 }
