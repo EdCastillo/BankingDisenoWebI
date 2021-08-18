@@ -44,7 +44,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Estado)
         </th>
-        <th></th>
+        
     </tr>
 
 @foreach (var item in Model) {
@@ -75,10 +75,10 @@
             'aoColumnDefs': [{ 'bSortable': false, 'aTargets': [0] }],
             'iDisplayLength': 5,
             buttons: [
-                { extend: 'copy', text: 'Copy to clipboard', className: 'exportExcel btn btn-info', exportOptions: { modifier: { page: 'all' } } },
-                { extend: 'excel', text: 'Export to Excel', className: 'exportExcel  btn btn-info', filename: 'Errores_Excel', exportOptions: { modifier: { page: 'all' } } },
-                { extend: 'csv', text: 'Export to CSV', className: 'exportExcel  btn btn-info', filename: 'Errores_Csv', exportOptions: { modifier: { page: 'all' } } },
-                { extend: 'pdf', text: 'Export to PDF', className: 'exportExcel  btn btn-info', filename: 'Errores_Pdf', orientation: 'landscape', pageSize: 'LEGAL', exportOptions: { modifier: { page: 'all' }, columns: ':visible' } }
+                { extend: 'copy', text: 'Copy to clipboard', className: 'exportExcel btn btn-primary', exportOptions: { modifier: { page: 'all' } } },
+                { extend: 'excel', text: 'Export to Excel', className: 'exportExcel  btn btn-primary', filename: 'Errores_Excel', exportOptions: { modifier: { page: 'all' } } },
+                { extend: 'csv', text: 'Export to CSV', className: 'exportExcel  btn btn-primary', filename: 'Errores_Csv', exportOptions: { modifier: { page: 'all' } } },
+                { extend: 'pdf', text: 'Export to PDF', className: 'exportExcel  btn btn-primary', filename: 'Errores_Pdf', orientation: 'landscape', pageSize: 'LEGAL', exportOptions: { modifier: { page: 'all' }, columns: ':visible' } }
             ]
         });
     });
